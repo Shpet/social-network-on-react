@@ -1,5 +1,8 @@
+import mod from './Navbar.module.css';
+
 const Navbar = () => {
-    return(
+  return (
+    <div className={mod.nav_wrapper}>
       <nav>
         <div>
           <a href="#">Моя страница</a>
@@ -14,7 +17,8 @@ const Navbar = () => {
           <a href="#">Музыка</a>
         </div>
       </nav>
-    )
+    </div>
+  )
 }
 
 export default Navbar;

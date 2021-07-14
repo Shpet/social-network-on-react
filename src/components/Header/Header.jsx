@@ -1,3 +1,5 @@
+import mod from './Header.module.css';
+
 const Header = () => {
     return (
         <header>
