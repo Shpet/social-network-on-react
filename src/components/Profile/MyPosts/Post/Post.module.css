@@ -1,0 +1,12 @@
+.posts__post{
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .posts__post p:last-child{
+    align-self: flex-end;
+  }

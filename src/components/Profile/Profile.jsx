@@ -1,3 +1,4 @@
+import MyPosts from './MyPosts/MyPosts'
 import mod from './Profile.module.css';
 
 const Profile = () => {
@@ -23,29 +24,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className={mod.posts}>
-        <h3>My posts</h3>
-        <div className={mod['posts__new-post']}>
-          <form>
-            <textarea placeholder="Write about your mood..."></textarea>
-            <input type="submit" />
-          </form>
-        </div>
-        <div className={mod['posts__old-posts']}>
-          <div className={mod['old-posts__post']}>
-            <p>Some text Some text Some text Some textSome text</p>
-            <p>01.11.2021</p>
-          </div>
-          <div className={mod['old-posts__post']}>
-            <p>Some text Some text Some text Some textSome text</p>
-            <p>01.11.2021</p>
-          </div>
-          <div className={mod['old-posts__post']}>
-            <p>Some text Some text Some text Some textSome text</p>
-            <p>01.11.2021</p>
-          </div>
-        </div>
-      </div>
+      <MyPosts />
     </main>
   )
 }
