@@ -1,10 +1,10 @@
 import mod from './Post.module.css';
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={mod['posts__post']}>
-            <p>Some text Some text Some text Some textSome text</p>
-            <p>01.11.2021</p>
+            <p>{props.mess}</p>
+            <p>{props.date}</p>
         </div>
     )
 }

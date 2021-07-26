@@ -12,8 +12,11 @@ const MyPosts = () => {
                 </form>
             </div>
             <div className={mod['old-posts']}>
-                <Post />
-                <Post />
+                <Post mess="he href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. 
+                If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles."
+                    date="01.03.2018" />
+                <Post mess="To ignore, add // eslint-disable-next-line to the line before." date="31.02.2017" />
+                <Post mess="First post" date="01.01.2016" />
             </div>
         </div>
     )
