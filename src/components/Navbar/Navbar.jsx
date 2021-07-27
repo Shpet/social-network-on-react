@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import mod from './Navbar.module.css';
 
 const Navbar = () => {
@@ -5,16 +6,16 @@ const Navbar = () => {
     <div className={mod.nav_wrapper}>
       <nav>
         <div>
-          <a href="/profile">Моя страница</a>
+          <NavLink to="/profile" activeClassName={mod.activeLink}>Моя страница</NavLink>
         </div>
         <div>
-          <a href="/messages">Сообщения</a>
+          <NavLink to="/messages" activeClassName={mod.activeLink}>Сообщения</NavLink>
         </div>
         <div>
-          <a href="/news">Новости</a>
+          <NavLink to="/news" activeClassName={mod.activeLink}>Новости</NavLink>
         </div>
         <div>
-          <a href="/music">Музыка</a>
+          <NavLink to="/music" activeClassName={mod.activeLink}>Музыка</NavLink>
         </div>
       </nav>
     </div>
