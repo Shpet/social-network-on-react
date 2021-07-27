@@ -1,14 +1,15 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin     : 0;
+  padding    : 0;
+  box-sizing : border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.app-wrap{
-  display: grid;
+
+.app-wrap {
+  display              : grid;
   grid-template-columns: 3fr 9fr;
-  grid-template-areas: 'h h'
-                       'n m';
-  grid-gap: 10px;
+  grid-template-areas  : 'h h'
+    'n m';
+  grid-gap        : 10px;
   background-color: rgb(41, 41, 41);
 }

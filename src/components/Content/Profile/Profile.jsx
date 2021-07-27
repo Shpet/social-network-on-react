@@ -3,7 +3,7 @@ import mod from './Profile.module.css';
 
 const Profile = () => {
   return (
-    <main>
+    <div>
       <div className={mod['banner-img']} style={{
         backgroundImage: `url("https://eskipaper.com/images/horizon-pictures-4.jpg")`
       }}>
@@ -25,7 +25,7 @@ const Profile = () => {
         </div>
       </div>
       <MyPosts />
-    </main>
+    </div>
   )
 }
 
