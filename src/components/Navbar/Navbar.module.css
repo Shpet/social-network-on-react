@@ -1,23 +1,43 @@
-.nav_wrapper{
-    grid-area: n;
-    background-color: #000;
-    width: 300px;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px 0 20px 0;
-    position: relative;
+.nav_wrapper {
+  grid-area                : n;
+  box-shadow               : rgb(99, 24, 24) 0 0 10px 10px;
+  width                    : 300px;
+  max-width                : 400px;
+  margin                   : 0 auto;
+  padding                  : 20px 0 20px 0;
+  position                 : fixed;
+  top                      : 15%;
+  left                     : 40px;
+  height                   : max-content;
+  animation-name           : glow;
+  animation-duration       : 1.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction      : alternate;
+}
+
+
+nav>div {
+  margin   : 10px auto;
+  max-width: 200px;
+}
+
+nav a {
+  color          : rgb(206, 48, 48);
+  text-decoration: none;
+  font-size      : 18px;
+  font-weight    : bold;
+}
+
+
+@keyframes glow {
+  0% {
+    box-shadow: rgb(99, 24, 24) 0 0 10px 10px;
+    transform : translateY(0px);
   }
-  nav{
-    position: fixed;
-    left: 90px;
+
+  100% {
+    transform : translateY(-5px);
+    box-shadow: rgb(99, 24, 24) 0 0 10px 12px;
   }
-  nav>div{
-    margin: 10px auto;
-    max-width: 200px;
-  }
-  nav a{
-    color: rgb(206, 48, 48);
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-  }
+}

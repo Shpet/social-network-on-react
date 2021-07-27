@@ -5,16 +5,16 @@ const Navbar = () => {
     <div className={mod.nav_wrapper}>
       <nav>
         <div>
-          <a href="#">Моя страница</a>
+          <a href="/profile">Моя страница</a>
         </div>
         <div>
-          <a href="#">Сообщения</a>
+          <a href="/messages">Сообщения</a>
         </div>
         <div>
-          <a href="#">Новости</a>
+          <a href="/news">Новости</a>
         </div>
         <div>
-          <a href="#">Музыка</a>
+          <a href="/music">Музыка</a>
         </div>
       </nav>
     </div>
