@@ -1,0 +1,130 @@
+.messWrap {
+    display              : grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.companionWrap {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    margin        : 50px 0;
+}
+
+.companion {
+    display        : flex;
+    width          : 100%;
+    padding        : 10px;
+    justify-content: space-around;
+    align-items    : center;
+    cursor         : pointer;
+}
+
+.companionActive {
+    color: rgb(206, 48, 48);
+}
+
+.companion img {
+    width           : 44px;
+    height          : 44px;
+    border-radius   : 5px;
+    background-color: rgb(41, 41, 41);
+}
+
+.dialog {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.dialog header {
+    text-align: center;
+}
+
+.dialog p:last-child {
+    font-size: 14px;
+}
+
+.statusOnline {
+    color: rgb(143, 206, 49);
+}
+
+.messages {
+    display       : flex;
+    flex-direction: column;
+}
+
+.message {
+    display        : flex;
+    justify-content: space-between;
+    margin         : 10px 0;
+    padding        : 0 30px;
+}
+
+.message img {
+    width    : auto;
+    height   : 44px;
+    width    : 44px;
+    flex     : 0 0 44px;
+    max-width: 44px;
+}
+
+.newMessageMargin {
+    flex     : 0 0 44px;
+    max-width: 44px;
+}
+
+.message .textMessage {
+    margin    : 0 10px;
+    text-align: justify;
+    max-width : 800px;
+}
+
+.message .dateMess {
+    flex      : 0 0 100px;
+    max-width : 100px;
+    font-size : 14px;
+    color     : #996565;
+    text-align: center;
+}
+
+.newMessage {
+    width: 100%;
+}
+
+.newMessage {
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-end;
+    max-width     : 800px;
+    margin        : 10px;
+    width         : 80%;
+}
+
+.newMessage textarea {
+    width           : 100%;
+    border          : 1px solid rgb(206, 48, 48);
+    outline         : none;
+    padding         : 10px 15px;
+    background-color: rgb(41, 41, 41);
+    color           : #c58383;
+    resize          : none;
+}
+
+.newMessage input {
+    background-color: transparent;
+    border          : 3px solid darkred;
+    color           : rgb(206, 48, 48);
+    text-transform  : uppercase;
+    font-size       : 11px;
+    font-weight     : 600;
+    letter-spacing  : .5px;
+    padding         : 10px 20px;
+    margin          : 10px 0 0 auto;
+    cursor          : pointer;
+    transition      : .2s;
+}
+
+.newMessage input:hover {
+    background-color: darkred;
+    color           : #000;
+}
