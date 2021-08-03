@@ -14,3 +14,11 @@
   background-color: rgb(41, 41, 41);
   min-height      : -webkit-fill-available;
 }
+
+.online {
+  color: rgb(143, 206, 49);
+}
+
+.statusoffline {
+  color: rgb(206, 49, 49);
+}
