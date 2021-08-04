@@ -1,6 +1,7 @@
 import mod from './Dialog.module.css';
 import DialogHeader from './DialogHeader/DialogHeader';
 import Message from './Message/Message';
+import NewMessage from './NewMessage/NewMessage';
 
 const Dialog = () => {
     return (
@@ -12,13 +13,8 @@ const Dialog = () => {
                 <Message imgUrl="https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo" imgAlt="companion's avatar" textMess="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab esse commodi exercitationem eligendi quasi ullam quod, enim assumenda placeat ducimus." dateMess="12.03.2017" />
                 <Message imgUrl="https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo" imgAlt="companion's avatar" textMess="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab esse commodi exercitationem eligendi quasi ullam quod, enim assumenda placeat ducimus." dateMess="12.03.2017" />
 
-                <div>
-                    <div className={mod.newMessageMargin}></div>
-                    <form className={mod.newMessage}>
-                        <textarea placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, laboriosam?"></textarea>
-                        <input type="submit" value="отправить" />
-                    </form>
-                </div>
+                <NewMessage />
+
             </section>
         </div >
     )
