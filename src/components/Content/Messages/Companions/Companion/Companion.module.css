@@ -2,9 +2,9 @@
     display        : flex;
     width          : 100%;
     padding        : 10px;
-    justify-content: space-around;
     align-items    : center;
-    cursor         : pointer;
+    text-decoration: none;
+    color          : #50186C;
 }
 
 .companionActive {
@@ -15,9 +15,7 @@
     width           : 44px;
     height          : 44px;
     border-radius   : 5px;
+    min-width       : 44px;
+    margin-right    : 10px;
     background-color: rgb(41, 41, 41);
-}
-
-.companion span {
-    text-align: center;
 }
