@@ -5,13 +5,13 @@ import Music from './Music/Music';
 import './Content.module.css';
 import { Route } from 'react-router-dom';
 
-const Content = () => {
+const Content = (props) => {
     return (
         <main>
-            <Route component={Profile} path="/profile" />
-            <Route component={Messages} path="/messages" />
-            <Route component={News} path="/news" />
-            <Route component={Music} path="/music" />
+            <Route render={() => <Profile postData={props.postData} />} path="/profile" />
+            <Route render={() => <Messages messageData={props.messageData} companionsData={props.companionsData} />} path="/messages" />
+            <Route render={() => <News />} path="/news" />
+            <Route render={() => <Music />} path="/music" />
         </main>
     )
 }

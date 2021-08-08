@@ -4,11 +4,11 @@ import Companions from './Companions/Companions';
 import Dialog from './Dialog/Dialog';
 import mod from './Messages.module.css';
 
-const Messages = () => {
+const Messages = (props) => {
     return (
         <div className={mod.messWrap}>
-            <Companions />
-            <Dialog />
+            <Companions companionsData={props.companionsData} />
+            <Dialog messageData={props.messageData} />
         </div>
     )
 }
