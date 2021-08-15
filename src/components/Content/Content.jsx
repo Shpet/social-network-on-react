@@ -8,8 +8,8 @@ import { Route } from 'react-router-dom';
 const Content = (props) => {
     return (
         <main>
-            <Route render={() => <Profile data={props.profilePage} />} path="/profile" />
-            <Route render={() => <Messages data={props.messagePage} />} path="/messages" />
+            <Route render={() => <Profile data={props.data.profilePage} />} path="/profile" />
+            <Route render={() => <Messages data={props.data.messagePage} />} path="/messages" />
             <Route render={() => <News />} path="/news" />
             <Route render={() => <Music />} path="/music" />
         </main>
