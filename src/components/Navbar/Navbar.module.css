@@ -1,15 +1,7 @@
-.nav_wrapper {
-  grid-area                : n;
-  background-color         : #000;
-  box-shadow               : rgb(99, 24, 24) 0 0 10px 10px;
-  width                    : 300px;
-  max-width                : 400px;
-  margin                   : 0 auto;
-  padding                  : 20px 0 20px 0;
-  position                 : fixed;
+.sidebar {
+  position                 : sticky;
   top                      : 20%;
   left                     : 40px;
-  height                   : max-content;
   animation-name           : glow;
   animation-duration       : 1.5s;
   animation-timing-function: ease;
@@ -17,6 +9,27 @@
   animation-direction      : alternate;
 }
 
+.sidebar:hover {
+  animation-play-state: paused;
+}
+
+.sidebar:hover .nav_wrapper {
+  animation-play-state: paused;
+}
+
+.nav_wrapper {
+  grid-area                : n;
+  background-color         : #000;
+  box-shadow               : rgb(99, 24, 24) 0 0 10px 10px;
+  width                    : 300px;
+  padding                  : 20px 0 20px 0;
+  height                   : max-content;
+  animation-name           : shine;
+  animation-duration       : 1.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction      : alternate;
+}
 
 nav>div {
   margin   : 10px auto;
@@ -38,15 +51,22 @@ nav a.activeLink {
   color: rgb(218, 207, 207);
 }
 
-
 @keyframes glow {
   0% {
-    box-shadow: rgb(99, 24, 24) 0 0 10px 10px;
-    transform : translateY(0px);
+    transform: translateY(0px);
   }
 
   100% {
-    transform : translateY(-5px);
-    box-shadow: rgb(99, 24, 24) 0 0 10px 12px;
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    box-shadow: rgb(99, 24, 24) 0 0 5px 5px;
+  }
+
+  100% {
+    box-shadow: rgba(185, 28, 28, 0.7) 0 0 5px 6px;
   }
 }

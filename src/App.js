@@ -11,8 +11,8 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrap">
         <Header />
-        <Navbar />
-        <Content data={props.data} />
+        <Navbar data={props.data.navbar} />
+        <Content data={props.data.content} />
       </div>
     </BrowserRouter>
   );
