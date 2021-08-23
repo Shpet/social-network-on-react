@@ -1,0 +1,55 @@
+.friend {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    text-align    : center;
+    color         : indianred;
+    flex          : 0 0 64px;
+    max-width     : 64px;
+    margin        : 7px;
+}
+
+.friend__avatarWrap {
+    width   : 100%;
+    position: relative;
+}
+
+.friend_online {
+    position        : absolute;
+    display         : block;
+    width           : 16px;
+    height          : 16px;
+    background-color: limegreen;
+    bottom          : 7px;
+    right           : 3px;
+    border-radius   : 50%;
+}
+
+.friend__avatarWrap img {
+    border-radius: 5px;
+}
+
+.friend_online::after {
+    content         : 'Online';
+    transform       : scale(0);
+    transform-origin: left;
+    transition      : .3s;
+    position        : absolute;
+    top             : 0;
+    left            : 5px;
+    padding         : 0 5px;
+    border-radius   : 3px;
+    color           : #000;
+    background-color: limegreen;
+    z-index         : 10;
+    font-size       : 12px;
+}
+
+.friend_online:hover::after {
+    transform: scale(1);
+}
+
+.friend__name {
+    text-transform: capitalize;
+    margin        : 10px 0;
+}
