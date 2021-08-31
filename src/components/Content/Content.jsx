@@ -8,10 +8,10 @@ import { Route } from 'react-router-dom';
 const Content = (props) => {
     return (
         <main>
-            <Route render={() => <Profile data={props.data.profilePage} />} path="/profile" />
-            <Route render={() => <Messages data={props.data.messagePage} />} path="/messages" />
-            <Route render={() => <News />} path="/news" />
-            <Route render={() => <Music />} path="/music" />
+            <Route exact path="/" render={() => <Profile data={props.data.profilePage} addPost={props.addPost} />} />
+            <Route path="/messages" render={() => <Messages data={props.data.messagePage} />} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/music" render={() => <Music />} />
         </main>
     )
 }

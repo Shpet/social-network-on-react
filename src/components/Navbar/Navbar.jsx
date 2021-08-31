@@ -5,11 +5,11 @@ import mod from './Navbar.module.css';
 const Navbar = (props) => {
 
   return (
-    <sidebar className={mod.sidebar}>
+    <div className={mod.sidebar}>
       <div className={mod.nav_wrapper} >
         <nav>
           <div>
-            <NavLink to="/profile" activeClassName={mod.activeLink}>Моя страница</NavLink>
+            <NavLink exact to="/" activeClassName={mod.activeLink}>Моя страница</NavLink>
           </div>
           <div>
             <NavLink to="/messages" activeClassName={mod.activeLink}>Сообщения</NavLink>
@@ -23,7 +23,7 @@ const Navbar = (props) => {
         </nav>
       </div>
       <Friends className={mod.nav_wrapper} data={props.data.friends} />
-    </sidebar>
+    </div>
   )
 }
 

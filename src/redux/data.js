@@ -1,10 +1,12 @@
+import rerender from "../rerender";
+
 let data = {
     content: {
         profilePage: {
             postData: [
-                { mess: "he href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles.", date: "01.03.2018" },
-                { mess: "To ignore, add // eslint-disable-next-line to the line before.", date: "31.02.2017" },
-                { mess: "First post", date: "01.06.2016" }
+                { id: 0, mess: "he href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles.", date: "01.03.2018" },
+                { id: 1, mess: "First post", date: "01.06.2016" },
+                { id: 2, mess: "To ignore, add // eslint-disable-next-line to the line before.", date: "31.02.2017" },
             ]
         },
         messagePage: {
@@ -33,5 +35,18 @@ let data = {
         ]
     }
 }
+
+export let addPost = (message) => {
+    const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
+    let newPost = {
+        id: 3,
+        mess: message,
+        date: dateNow,
+    }
+    data.content.profilePage.postData.push(newPost);
+    rerender(data, addPost);
+
+}
+
 
 export default data;
