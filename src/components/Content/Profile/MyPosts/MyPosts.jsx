@@ -6,11 +6,13 @@ const MyPosts = (props) => {
 
     let newPost = React.createRef(),
         posts = props.postData.map(p => <Post mess={p.mess} date={p.date} />),
+        textNewPost = props.textNewPost,
         addPost = () => {
-            let mess = newPost.current.value;
-            newPost.current.value = '';
+            props.addPost();
+        },
+        updateTextNewPost = () => {
 
-            props.addPost(mess);
+            props.updateTextNewPost(newPost.current.value);
         }
 
     return (
@@ -18,7 +20,10 @@ const MyPosts = (props) => {
             <h3>My posts</h3>
             <div className={mod['posts__new-post']}>
                 <form>
-                    <textarea placeholder="Write about your mood..." ref={newPost}></textarea>
+                    <textarea placeholder="Write about your mood..."
+                        ref={newPost}
+                        value={textNewPost}
+                        onChange={updateTextNewPost} />
                     <input type="submit" onClick={(e) => { e.preventDefault(); addPost(); }} />
                 </form>
             </div>

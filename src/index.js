@@ -1,10 +1,9 @@
 import reportWebVitals from './reportWebVitals';
-import data from './redux/data';
-import { addPost } from './redux/data';
+import data, { sendMess, updateTextSendMess, addPost, updateTextNewPost } from './redux/data';
 import rerender from './rerender';
 
 
-rerender(data, addPost);
+rerender(data, addPost, updateTextNewPost);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

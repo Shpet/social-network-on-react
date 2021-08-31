@@ -7,7 +7,8 @@ let data = {
                 { id: 0, mess: "he href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles.", date: "01.03.2018" },
                 { id: 1, mess: "First post", date: "01.06.2016" },
                 { id: 2, mess: "To ignore, add // eslint-disable-next-line to the line before.", date: "31.02.2017" },
-            ]
+            ],
+            textNewPost: ''
         },
         messagePage: {
             messageData: [
@@ -22,7 +23,8 @@ let data = {
                 { id: 3, imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo", imgAlt: "companion's avatar", name: "Pochka Ruka" },
                 { id: 4, imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo", imgAlt: "companion's avatar", name: "Lishayna Masha" },
                 { id: 5, imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo", imgAlt: "companion's avatar", name: "Neznayeva Ksu" }
-            ]
+            ],
+            textNewMess: ''
         }
     },
     navbar: {
@@ -36,17 +38,47 @@ let data = {
     }
 }
 
-export let addPost = (message) => {
-    const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
-    let newPost = {
-        id: 3,
-        mess: message,
-        date: dateNow,
-    }
-    data.content.profilePage.postData.push(newPost);
-    rerender(data, addPost);
+export let addPost = () => {
+    if (data.content.profilePage.textNewPost) {
+        const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
+        let newPost = {
+            id: 3,
+            mess: data.content.profilePage.textNewPost,
+            date: dateNow,
+        }
 
+        data.content.profilePage.postData.push(newPost);
+        data.content.profilePage.textNewPost = '';
+        rerender(data);
+    }
 }
+
+export let updateTextNewPost = (text) => {
+    data.content.profilePage.textNewPost = text;
+    rerender(data)
+}
+
+
+// export let sendMess = () => {
+//     if (data.content.profilePage.textNewPost) {
+//         const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
+//         let sendMess = {
+//             imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo", 
+//             imgAlt: "You", 
+//             textMess: '',
+//             date: dateNow,
+//         }
+
+//         data.content.messagePage.messageData.push(sendMess);
+//         data.content.messagePage.textNewMess = '';
+//         rerender(data);
+//     }
+// }
+
+// export let updateTextSendMess = (text) => {
+//     data.content.messagePage.textNewMess = text;
+//     rerender(data)
+// }
 
 
 export default data;
