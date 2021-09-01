@@ -12,7 +12,11 @@ const App = (props) => {
       <div className="app-wrap">
         <Header />
         <Navbar data={props.data.navbar} />
-        <Content data={props.data.content} addPost={props.addPost} updateTextNewPost={props.updateTextNewPost} />
+        <Content data={props.data.content} 
+                 addPost={props.addPost} 
+                 updateTextNewPost={props.updateTextNewPost} 
+                 sendMess={props.sendMess} 
+                 updateTextSendMess={props.updateTextSendMess} />
       </div>
     </BrowserRouter>
   );

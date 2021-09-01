@@ -8,7 +8,7 @@ const Message = (props) => {
     return (
         <div className={mod.message}>
             <img src={imgUrl} alt={imgAlt} />
-            <p class={mod.textMessage}>{textMess}</p>
+            <pre className={mod.textMessage}>{textMess}</pre>
             <p className={mod.dateMess}>{dateMess}</p>
         </div>
     )

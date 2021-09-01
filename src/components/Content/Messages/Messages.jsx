@@ -8,7 +8,10 @@ const Messages = (props) => {
     return (
         <div className={mod.messWrap}>
             <Companions companionsData={props.data.companionsData} />
-            <Dialog messageData={props.data.messageData} />
+            <Dialog messageData={props.data.messageData}
+                    sendMess={props.sendMess}
+                    updateTextSendMess={props.updateTextSendMess}
+                    textNewMess={props.data.textNewMess}  />
         </div>
     )
 }

@@ -19,6 +19,9 @@ main .posts{
     height: 100px;
     padding: 10px;
     font-size: 16px;
+    resize: vertical;
+    max-height: 250px;
+    min-height: 100px;
   }
   .posts__new-post form input{
     width: 200px;

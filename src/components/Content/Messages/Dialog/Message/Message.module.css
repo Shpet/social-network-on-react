@@ -16,6 +16,9 @@
     margin    : 0 10px;
     text-align: justify;
     max-width : 800px;
+    width: 100%;
+    display: block;
+    white-space: break-spaces;
 }
 
 .message .dateMess {

@@ -3,7 +3,7 @@ import data, { sendMess, updateTextSendMess, addPost, updateTextNewPost } from '
 import rerender from './rerender';
 
 
-rerender(data, addPost, updateTextNewPost);
+rerender(data, addPost, updateTextNewPost, sendMess, updateTextSendMess);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
