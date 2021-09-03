@@ -1,4 +1,6 @@
-import rerender from "../rerender";
+let rerender = () => {
+
+}
 
 let data = {
     content: {
@@ -67,7 +69,7 @@ export let functions = {
                 textMess: data.content.messagePage.textNewMess,
                 dateMess: dateNow,
             }
-    
+
             data.content.messagePage.messageData.push(sendMess);
             data.content.messagePage.textNewMess = '';
             rerender(data, functions);
@@ -76,8 +78,32 @@ export let functions = {
     updateTextSendMess: (text) => {
         data.content.messagePage.textNewMess = text;
         rerender(data, functions)
+    },
+    isPressSend: function (e) {
+        let enter = false,
+            shift = false;
+        if (e.key === "Enter") {
+            enter = true;   // sendMess();
+        }
+        if (e.shiftKey) {
+            shift = true;
+        }
+        if (enter && shift) {
+            e.preventDefault();
+            enter = false;
+            shift = false;
+            if (data.content.messagePage.textNewMess) {
+                this.sendMess();
+            } else {
+                this.addPost();
+
+            }
+        }
     }
 }
 
+export const subscribe = (observer)=>{
+    rerender = observer;
+}
 
 export default data;

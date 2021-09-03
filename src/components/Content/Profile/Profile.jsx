@@ -27,7 +27,8 @@ const Profile = (props) => {
       <MyPosts postData={props.data.postData} 
                addPost={props.addPost} 
                textNewPost={props.data.textNewPost} 
-               updateTextNewPost={props.updateTextNewPost}/>
+               updateTextNewPost={props.updateTextNewPost}
+               isPressSend={props.isPressSend}/>
     </div>
   )
 }

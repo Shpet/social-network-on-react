@@ -11,7 +11,8 @@ const Messages = (props) => {
             <Dialog messageData={props.data.messageData}
                     sendMess={props.sendMess}
                     updateTextSendMess={props.updateTextSendMess}
-                    textNewMess={props.data.textNewMess}  />
+                    textNewMess={props.data.textNewMess} 
+                    isPressSend={props.isPressSend} />
         </div>
     )
 }

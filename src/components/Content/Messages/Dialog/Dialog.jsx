@@ -17,7 +17,8 @@ const Dialog = (props) => {
                 {messages}
                 <NewMessage sendMess={props.sendMess}
                     updateTextSendMess={props.updateTextSendMess}
-                    textNewMess={props.textNewMess} />
+                    textNewMess={props.textNewMess} 
+                    isPressSend={props.isPressSend}/>
 
             </section>
         </div >

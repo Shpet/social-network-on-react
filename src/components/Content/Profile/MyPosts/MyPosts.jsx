@@ -11,26 +11,11 @@ const MyPosts = (props) => {
             props.addPost();
         },
         updateTextNewPost = () => {
-
             props.updateTextNewPost(newPost.current.value);
         },
         isPressSend = (e) => {
-            let enter = false,
-                shift = false;
-            if (e.key === "Enter") {
-                enter = true;   // sendMess();
-            }
-            if (e.shiftKey) {
-                shift = true;
-            }
-            if (enter && shift) {
-                e.preventDefault();
-                addPost();
-                enter = false;
-                shift = false;
-            }
-        };
-
+            props.isPressSend(e)
+        }
     return (
         <div className={mod.posts}>
             <h3>My posts</h3>

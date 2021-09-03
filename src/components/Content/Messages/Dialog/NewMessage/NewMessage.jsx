@@ -11,20 +11,7 @@ const NewMessage = (props) => {
             props.updateTextSendMess(newMess.current.value);
         },
         isPressSend = (e) => {
-            let enter = false,
-                shift = false;
-            if (e.key === "Enter") {
-                enter = true;   // sendMess();
-            }
-            if (e.shiftKey) {
-                shift = true;
-            }
-            if (enter && shift) {
-                e.preventDefault();
-                sendMess();
-                enter = false;
-                shift = false;
-            }
+            props.isPressSend(e)
         }
     return (
         <form className={mod.newMessage}>
