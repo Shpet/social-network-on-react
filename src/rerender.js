@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { addPost, updateTextNewPost, sendMess, updateTextSendMess } from './redux/data';
 
-let rerender = (data) => {
+let rerender = (data, functions) => {
   ReactDOM.render(
     <React.StrictMode>
       
-      <App data={data} addPost={addPost} updateTextNewPost={updateTextNewPost} sendMess={sendMess} updateTextSendMess={updateTextSendMess} />
+      <App data={data} functions={functions}/>
     </React.StrictMode>,
     document.getElementById('root')
   );

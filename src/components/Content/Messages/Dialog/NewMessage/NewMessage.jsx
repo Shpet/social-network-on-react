@@ -20,6 +20,7 @@ const NewMessage = (props) => {
                 shift = true;
             }
             if (enter && shift) {
+                e.preventDefault();
                 sendMess();
                 enter = false;
                 shift = false;

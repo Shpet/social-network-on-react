@@ -38,48 +38,45 @@ let data = {
             { id: 5, name: 'Kim\'Ann Raymond', imgUrl: 'https://yt3.ggpht.com/ytc/AKedOLTDdAyFQThm2qhIB3TfchgPZB35CpC5qxdPCJDW=s88-c-k-c0x00ffffff-no-rj', isOnline: false },
         ]
     }
-}
+};
+export let functions = {
+    addPost: () => {
+        if (data.content.profilePage.textNewPost.trim()) {
+            const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
+            let newPost = {
+                id: 3,
+                mess: data.content.profilePage.textNewPost,
+                date: dateNow,
+            }
 
-export let addPost = () => {
-    if (data.content.profilePage.textNewPost.trim()) {
-        const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
-        let newPost = {
-            id: 3,
-            mess: data.content.profilePage.textNewPost,
-            date: dateNow,
+            data.content.profilePage.postData.unshift(newPost);
+            data.content.profilePage.textNewPost = '';
+            rerender(data, functions);
         }
-
-        data.content.profilePage.postData.push(newPost);
-        data.content.profilePage.textNewPost = '';
-        rerender(data);
-    }
-}
-
-export let updateTextNewPost = (text) => {
-    data.content.profilePage.textNewPost = text;
-    rerender(data)
-}
-
-
-export let sendMess = () => {
-    if (data.content.messagePage.textNewMess.trim()) {
-        const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
-        let sendMess = {
-            imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo", 
-            imgAlt: "You", 
-            textMess: data.content.messagePage.textNewMess,
-            dateMess: dateNow,
+    },
+    updateTextNewPost: (text) => {
+        data.content.profilePage.textNewPost = text;
+        rerender(data, functions)
+    },
+    sendMess: () => {
+        if (data.content.messagePage.textNewMess.trim()) {
+            const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
+            let sendMess = {
+                imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo",
+                imgAlt: "You",
+                textMess: data.content.messagePage.textNewMess,
+                dateMess: dateNow,
+            }
+    
+            data.content.messagePage.messageData.push(sendMess);
+            data.content.messagePage.textNewMess = '';
+            rerender(data, functions);
         }
-
-        data.content.messagePage.messageData.push(sendMess);
-        data.content.messagePage.textNewMess = '';
-        rerender(data);
+    },
+    updateTextSendMess: (text) => {
+        data.content.messagePage.textNewMess = text;
+        rerender(data, functions)
     }
-}
-
-export let updateTextSendMess = (text) => {
-    data.content.messagePage.textNewMess = text;
-    rerender(data)
 }
 
 

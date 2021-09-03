@@ -10,3 +10,11 @@
   .posts__post p:last-child{
     align-self: flex-end;
   }
+  .textPost{
+    margin: 0 10px;
+    text-align: justify;
+    max-width: 800px;
+    width: auto;
+    display: block;
+    white-space: break-spaces;
+  }

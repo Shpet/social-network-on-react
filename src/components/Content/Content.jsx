@@ -10,12 +10,12 @@ const Content = (props) => {
         <main>
             <Route exact path="/" render={() => <Profile 
                 data={props.data.profilePage} 
-                addPost={props.addPost}
-                updateTextNewPost={props.updateTextNewPost} />} />
+                addPost={props.functions.addPost}
+                updateTextNewPost={props.functions.updateTextNewPost} />} />
             <Route path="/messages" render={() => <Messages 
                 data={props.data.messagePage}
-                sendMess={props.sendMess}
-                updateTextSendMess={props.updateTextSendMess}
+                sendMess={props.functions.sendMess}
+                updateTextSendMess={props.functions.updateTextSendMess}
                  />} />
             <Route path="/news" render={() => <News />} />
             <Route path="/music" render={() => <Music />} />

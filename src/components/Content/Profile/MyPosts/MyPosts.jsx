@@ -13,7 +13,23 @@ const MyPosts = (props) => {
         updateTextNewPost = () => {
 
             props.updateTextNewPost(newPost.current.value);
-        }
+        },
+        isPressSend = (e) => {
+            let enter = false,
+                shift = false;
+            if (e.key === "Enter") {
+                enter = true;   // sendMess();
+            }
+            if (e.shiftKey) {
+                shift = true;
+            }
+            if (enter && shift) {
+                e.preventDefault();
+                addPost();
+                enter = false;
+                shift = false;
+            }
+        };
 
     return (
         <div className={mod.posts}>
@@ -23,7 +39,8 @@ const MyPosts = (props) => {
                     <textarea placeholder="Write about your mood..."
                         ref={newPost}
                         value={textNewPost}
-                        onChange={updateTextNewPost} />
+                        onChange={updateTextNewPost}
+                        onKeyDown={isPressSend} />
                     <input type="submit" onClick={(e) => { e.preventDefault(); addPost(); }} />
                 </form>
             </div>

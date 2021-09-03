@@ -13,10 +13,7 @@ const App = (props) => {
         <Header />
         <Navbar data={props.data.navbar} />
         <Content data={props.data.content} 
-                 addPost={props.addPost} 
-                 updateTextNewPost={props.updateTextNewPost} 
-                 sendMess={props.sendMess} 
-                 updateTextSendMess={props.updateTextSendMess} />
+                 functions={props.functions}  />
       </div>
     </BrowserRouter>
   );
