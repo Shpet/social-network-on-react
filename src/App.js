@@ -7,13 +7,13 @@ import Content from './components/Content/Content';
 import { BrowserRouter } from 'react-router-dom';
 
 const App = (props) => {
+  
   return (
     <BrowserRouter>
       <div className="app-wrap">
         <Header />
-        <Navbar data={props.data.navbar} />
-        <Content data={props.data.content} 
-                 functions={props.functions}  />
+        <Navbar data={props.store.getData().navbar} />
+        <Content store={props.store}  />
       </div>
     </BrowserRouter>
   );

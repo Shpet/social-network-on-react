@@ -8,14 +8,15 @@ const MyPosts = (props) => {
         posts = props.postData.map(p => <Post mess={p.mess} date={p.date} />),
         textNewPost = props.textNewPost,
         addPost = () => {
-            props.addPost();
+            props.dispatch({type: 'ADD-POST'});
         },
         updateTextNewPost = () => {
-            props.updateTextNewPost(newPost.current.value);
+            props.dispatch({type: 'ADD-POST', text: newPost.current.value});
         },
         isPressSend = (e) => {
-            props.isPressSend(e)
+            props.dispatch({type: 'ADD-POST', event: e});
         }
+        debugger;
     return (
         <div className={mod.posts}>
             <h3>My posts</h3>
