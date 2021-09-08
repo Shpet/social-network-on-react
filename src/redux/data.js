@@ -1,5 +1,3 @@
-import { act } from "react-dom/test-utils";
-
 let store = {
     _data: {
         content: {
@@ -40,10 +38,10 @@ let store = {
             ]
         }
     },
-    getData(){
+    getData() {
         return this._data;
     },
-    _callSubscriber (){
+    _callSubscriber() {
         console.log('data changed');
     },
     _addPost() {
@@ -54,15 +52,14 @@ let store = {
                 mess: this._data.content.profilePage.textNewPost,
                 date: dateNow,
             }
-
             this._data.content.profilePage.postData.unshift(newPost);
             this._data.content.profilePage.textNewPost = '';
-            this._callSubscriber(this);
+            this._callSubscriber(this._data);
         }
     },
     _updateTextNewPost(text) {
         this._data.content.profilePage.textNewPost = text;
-        this._callSubscriber(this)
+        this._callSubscriber(this._data)
     },
     _sendMess() {
         if (this._data.content.messagePage.textNewMess.trim()) {
@@ -76,12 +73,12 @@ let store = {
 
             this._data.content.messagePage.messageData.push(sendMess);
             this._data.content.messagePage.textNewMess = '';
-            this._callSubscriber(this);
+            this._callSubscriber(this._data);
         }
     },
     _updateTextSendMess(text) {
         this._data.content.messagePage.textNewMess = text;
-        this._callSubscriber(this)
+        this._callSubscriber(this._data)
     },
     _isPressSend(e) {
         let enter = false,
@@ -97,23 +94,22 @@ let store = {
             enter = false;
             shift = false;
             if (this._data.content.messagePage.textNewMess) {
-                this.sendMess();
+                this._sendMess();
             } else {
-                this.addPost();
-
+                this._addPost();
             }
         }
     },
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-    dispatch(action){
-        switch(action.type){
+    dispatch(action) {
+        switch (action.type) {
             case "ADD-POST":
                 this._addPost();
                 break;
             case "UPDATE-TEXT-NEW-POST":
-                this._updateTextNewPost(action.text);
+                this._updateTextNewPost(action.textNewPost);
                 break;
             case "SEND-MESS":
                 this._sendMess();
@@ -129,6 +125,9 @@ let store = {
         }
     }
 };
-
-
+export const actionCreatorAddPost = () => ({ type: 'ADD-POST' }),
+    actionCreatorUpdateTextNewPost = text => ({ type: 'UPDATE-TEXT-NEW-POST', 
+                                                textNewPost: text }),
+    actionCreatorIsPressSend = (e) => ({ type: 'IS-PRESS-SEND', 
+                                         event: e });
 export default store;

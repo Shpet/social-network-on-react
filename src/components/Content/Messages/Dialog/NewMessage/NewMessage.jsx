@@ -5,13 +5,13 @@ const NewMessage = (props) => {
     let newMess = React.createRef(),
         textNewMess = props.textNewMess,
         sendMess = () => {
-            props.sendMess();
+            props.dispatch({type: 'SEND-MESS'});
         },
         updateTextSendMess = () => {
-            props.updateTextSendMess(newMess.current.value);
+            props.dispatch({type: 'UPDATE-TEXT-SEND-MESS', text: newMess.current.value});
         },
         isPressSend = (e) => {
-            props.isPressSend(e)
+            props.dispatch({type: 'IS-PRESS-SEND', event: e});
         }
     return (
         <form className={mod.newMessage}>

@@ -15,10 +15,8 @@ const Dialog = (props) => {
             <DialogHeader name="Vadik Shpet" status="online" />
             <section className={mod.messages}>
                 {messages}
-                <NewMessage sendMess={props.sendMess}
-                    updateTextSendMess={props.updateTextSendMess}
-                    textNewMess={props.textNewMess} 
-                    isPressSend={props.isPressSend}/>
+                <NewMessage dispatch={props.dispatch}
+                    textNewMess={props.textNewMess}/>
 
             </section>
         </div >

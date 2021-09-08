@@ -9,12 +9,12 @@ const Content = (props) => {
     return (
         <main>
             <Route exact path="/" render={() => <Profile
-                data={props.store.getData().content.profilePage}
-                dispatch={props.store.dispatch.bind(props.store)} />}
+                data={props.data.profilePage}
+                dispatch={props.dispatch} />}
             />
             <Route path="/messages" render={() => <Messages
-                data={props.store.getData().content.messagePage}
-                dispatch={props.store.dispatch.bind(props.store)}
+                data={props.data.messagePage}
+                dispatch={props.dispatch}
             />} />
             <Route path="/news" render={() => <News />} />
             <Route path="/music" render={() => <Music />} />

@@ -1,6 +1,9 @@
 import React from 'react';
 import Post from './Post/Post'
 import mod from './MyPosts.module.css';
+import { actionCreatorAddPost, actionCreatorUpdateTextNewPost, actionCreatorIsPressSend } from '../../../../redux/data.js';
+
+
 
 const MyPosts = (props) => {
 
@@ -8,15 +11,14 @@ const MyPosts = (props) => {
         posts = props.postData.map(p => <Post mess={p.mess} date={p.date} />),
         textNewPost = props.textNewPost,
         addPost = () => {
-            props.dispatch({type: 'ADD-POST'});
+            props.dispatch(actionCreatorAddPost);
         },
         updateTextNewPost = () => {
-            props.dispatch({type: 'ADD-POST', text: newPost.current.value});
+            props.dispatch(actionCreatorUpdateTextNewPost(newPost.current.value));
         },
         isPressSend = (e) => {
-            props.dispatch({type: 'ADD-POST', event: e});
+            props.dispatch(actionCreatorIsPressSend(e));
         }
-        debugger;
     return (
         <div className={mod.posts}>
             <h3>My posts</h3>

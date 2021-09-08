@@ -5,17 +5,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-let rerender = (store) => {
+let rerender = (data) => {
   ReactDOM.render(
     <React.StrictMode>
       
-      <App store={store} />
+      <App data={data} dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
 
-rerender(store);
+rerender(store.getData());
 store.subscribe(rerender);
 
 // If you want to start measuring performance in your app, pass a function
