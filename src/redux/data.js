@@ -125,9 +125,16 @@ let store = {
         }
     }
 };
-export const actionCreatorAddPost = () => ({ type: 'ADD-POST' }),
-    actionCreatorUpdateTextNewPost = text => ({ type: 'UPDATE-TEXT-NEW-POST', 
-                                                textNewPost: text }),
-    actionCreatorIsPressSend = (e) => ({ type: 'IS-PRESS-SEND', 
-                                         event: e });
+export const
+    actionCreatorAddPost = () => ({ 
+        type: 'ADD-POST' 
+    }),
+    actionCreatorUpdateTextNewPost = text => ({
+        type: 'UPDATE-TEXT-NEW-POST',
+        textNewPost: text
+    }),
+    actionCreatorIsPressSend = (e) => ({
+        type: 'IS-PRESS-SEND',
+        event: e
+    });
 export default store;

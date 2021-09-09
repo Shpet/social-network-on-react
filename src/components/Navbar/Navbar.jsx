@@ -3,7 +3,6 @@ import Friends from './Friends/Friends';
 import mod from './Navbar.module.css';
 
 const Navbar = (props) => {
-  debugger;
   return (
     <div className={mod.sidebar}>
       <div className={mod.nav_wrapper} >

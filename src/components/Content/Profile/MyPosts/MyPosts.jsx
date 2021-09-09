@@ -7,14 +7,14 @@ import { actionCreatorAddPost, actionCreatorUpdateTextNewPost, actionCreatorIsPr
 
 const MyPosts = (props) => {
 
-    let newPost = React.createRef(),
-        posts = props.postData.map(p => <Post mess={p.mess} date={p.date} />),
+    let posts = props.postData.map(p => <Post mess={p.mess} date={p.date} />),
         textNewPost = props.textNewPost,
-        addPost = () => {
-            props.dispatch(actionCreatorAddPost);
+        addPost = (e) => {
+            e.preventDefault();
+            props.dispatch(actionCreatorAddPost());
         },
-        updateTextNewPost = () => {
-            props.dispatch(actionCreatorUpdateTextNewPost(newPost.current.value));
+        updateTextNewPost = (e) => {
+            props.dispatch(actionCreatorUpdateTextNewPost(e.target.value));
         },
         isPressSend = (e) => {
             props.dispatch(actionCreatorIsPressSend(e));
@@ -25,11 +25,10 @@ const MyPosts = (props) => {
             <div className={mod['posts__new-post']}>
                 <form>
                     <textarea placeholder="Write about your mood..."
-                        ref={newPost}
                         value={textNewPost}
                         onChange={updateTextNewPost}
                         onKeyDown={isPressSend} />
-                    <input type="submit" onClick={(e) => { e.preventDefault(); addPost(); }} />
+                    <input type="submit" onClick={addPost} />
                 </form>
             </div>
             <div className={mod['old-posts']}>

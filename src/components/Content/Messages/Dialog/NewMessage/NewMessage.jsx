@@ -2,13 +2,12 @@ import React from 'react';
 import mod from './NewMessage.module.css';
 
 const NewMessage = (props) => {
-    let newMess = React.createRef(),
-        textNewMess = props.textNewMess,
+    let textNewMess = props.textNewMess,
         sendMess = () => {
             props.dispatch({type: 'SEND-MESS'});
         },
-        updateTextSendMess = () => {
-            props.dispatch({type: 'UPDATE-TEXT-SEND-MESS', text: newMess.current.value});
+        updateTextSendMess = (e) => {
+            props.dispatch({type: 'UPDATE-TEXT-SEND-MESS', text: e.target.value});
         },
         isPressSend = (e) => {
             props.dispatch({type: 'IS-PRESS-SEND', event: e});
@@ -16,7 +15,6 @@ const NewMessage = (props) => {
     return (
         <form className={mod.newMessage}>
             <textarea placeholder="Enter your message"
-                ref={newMess}
                 value={textNewMess}
                 onChange={updateTextSendMess}
                 onKeyDown={isPressSend}></textarea>
