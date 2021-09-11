@@ -1,3 +1,6 @@
+import reducerMessage from "./reducerMessage";
+import reducerProfile from "./reducerProfile";
+
 let store = {
     _data: {
         content: {
@@ -44,42 +47,6 @@ let store = {
     _callSubscriber() {
         console.log('data changed');
     },
-    _addPost() {
-        if (this._data.content.profilePage.textNewPost.trim()) {
-            const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
-            let newPost = {
-                id: 3,
-                mess: this._data.content.profilePage.textNewPost,
-                date: dateNow,
-            }
-            this._data.content.profilePage.postData.unshift(newPost);
-            this._data.content.profilePage.textNewPost = '';
-            this._callSubscriber(this._data);
-        }
-    },
-    _updateTextNewPost(text) {
-        this._data.content.profilePage.textNewPost = text;
-        this._callSubscriber(this._data)
-    },
-    _sendMess() {
-        if (this._data.content.messagePage.textNewMess.trim()) {
-            const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
-            let sendMess = {
-                imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo",
-                imgAlt: "You",
-                textMess: this._data.content.messagePage.textNewMess,
-                dateMess: dateNow,
-            }
-
-            this._data.content.messagePage.messageData.push(sendMess);
-            this._data.content.messagePage.textNewMess = '';
-            this._callSubscriber(this._data);
-        }
-    },
-    _updateTextSendMess(text) {
-        this._data.content.messagePage.textNewMess = text;
-        this._callSubscriber(this._data)
-    },
     _isPressSend(e) {
         let enter = false,
             shift = false;
@@ -104,19 +71,12 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
+        this._data.content.profilePage = reducerProfile(this._data.content.profilePage, action);
+        this._data.content.messagePage = reducerMessage(this._data.content.messagePage, action);
+
+        this._callSubscriber(this._data)
+
         switch (action.type) {
-            case "ADD-POST":
-                this._addPost();
-                break;
-            case "UPDATE-TEXT-NEW-POST":
-                this._updateTextNewPost(action.textNewPost);
-                break;
-            case "SEND-MESS":
-                this._sendMess();
-                break;
-            case "UPDATE-TEXT-SEND-MESS":
-                this._updateTextSendMess(action.text);
-                break;
             case "IS-PRESS-SEND":
                 this._isPressSend(action.event);
                 break;
@@ -125,16 +85,8 @@ let store = {
         }
     }
 };
-export const
-    actionCreatorAddPost = () => ({ 
-        type: 'ADD-POST' 
-    }),
-    actionCreatorUpdateTextNewPost = text => ({
-        type: 'UPDATE-TEXT-NEW-POST',
-        textNewPost: text
-    }),
-    actionCreatorIsPressSend = (e) => ({
-        type: 'IS-PRESS-SEND',
-        event: e
-    });
+export const actionCreatorIsPressSend = (e) => ({
+    type: 'IS-PRESS-SEND',
+    event: e
+});
 export default store;

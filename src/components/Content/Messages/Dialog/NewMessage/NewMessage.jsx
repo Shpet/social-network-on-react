@@ -1,13 +1,15 @@
 import React from 'react';
+import { actionCreatorSendMess, actionCreatorUpdateTextMessage } from '../../../../../redux/reducerMessage';
 import mod from './NewMessage.module.css';
 
 const NewMessage = (props) => {
     let textNewMess = props.textNewMess,
-        sendMess = () => {
-            props.dispatch({type: 'SEND-MESS'});
+        sendMess = (e) => {
+            e.preventDefault();
+            props.dispatch(actionCreatorSendMess());
         },
         updateTextSendMess = (e) => {
-            props.dispatch({type: 'UPDATE-TEXT-SEND-MESS', text: e.target.value});
+            props.dispatch(actionCreatorUpdateTextMessage(e.target.value));
         },
         isPressSend = (e) => {
             props.dispatch({type: 'IS-PRESS-SEND', event: e});
@@ -19,7 +21,7 @@ const NewMessage = (props) => {
                 onChange={updateTextSendMess}
                 onKeyDown={isPressSend}></textarea>
             <input type="submit" value="отправить"
-                onClick={(e) => { e.preventDefault(); sendMess(); }} />
+                onClick={sendMess} />
         </form>
     )
 }

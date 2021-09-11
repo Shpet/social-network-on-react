@@ -1,7 +1,8 @@
 import React from 'react';
 import Post from './Post/Post'
 import mod from './MyPosts.module.css';
-import { actionCreatorAddPost, actionCreatorUpdateTextNewPost, actionCreatorIsPressSend } from '../../../../redux/data.js';
+import { actionCreatorAddPost, actionCreatorUpdateTextNewPost } from '../../../../redux/reducerProfile';
+import { actionCreatorIsPressSend } from '../../../../redux/data';
 
 
 
