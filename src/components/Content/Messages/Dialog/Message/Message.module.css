@@ -13,12 +13,12 @@
 }
 
 .message .textMessage {
-    margin    : 0 10px;
-    text-align: justify;
-    max-width : 800px;
-    width: auto;
-    display: block;
-    white-space: break-spaces;
+    margin     : 0 10px;
+    text-align : justify;
+    max-width  : 800px;
+    width      : auto;
+    display    : block;
+    white-space: normal;
 }
 
 .message .dateMess {

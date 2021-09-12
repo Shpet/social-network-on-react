@@ -47,26 +47,6 @@ let store = {
     _callSubscriber() {
         console.log('data changed');
     },
-    _isPressSend(e) {
-        let enter = false,
-            shift = false;
-        if (e.key === "Enter") {
-            enter = true;
-        }
-        if (e.shiftKey) {
-            shift = true;
-        }
-        if (enter && shift) {
-            e.preventDefault();
-            enter = false;
-            shift = false;
-            if (this._data.content.messagePage.textNewMess) {
-                this._sendMess();
-            } else {
-                this._addPost();
-            }
-        }
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
     },
@@ -75,18 +55,6 @@ let store = {
         this._data.content.messagePage = reducerMessage(this._data.content.messagePage, action);
 
         this._callSubscriber(this._data)
-
-        switch (action.type) {
-            case "IS-PRESS-SEND":
-                this._isPressSend(action.event);
-                break;
-            default:
-                console.log('Method unfound');
-        }
     }
 };
-export const actionCreatorIsPressSend = (e) => ({
-    type: 'IS-PRESS-SEND',
-    event: e
-});
 export default store;

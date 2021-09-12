@@ -1,5 +1,5 @@
 import React from 'react';
-import { actionCreatorSendMess, actionCreatorUpdateTextMessage } from '../../../../../redux/reducerMessage';
+import { actionCreatorIsPressSend, actionCreatorSendMess, actionCreatorUpdateTextMessage } from '../../../../../redux/reducerMessage';
 import mod from './NewMessage.module.css';
 
 const NewMessage = (props) => {
@@ -12,7 +12,7 @@ const NewMessage = (props) => {
             props.dispatch(actionCreatorUpdateTextMessage(e.target.value));
         },
         isPressSend = (e) => {
-            props.dispatch({type: 'IS-PRESS-SEND', event: e});
+            props.dispatch(actionCreatorIsPressSend(e));
         }
     return (
         <form className={mod.newMessage}>

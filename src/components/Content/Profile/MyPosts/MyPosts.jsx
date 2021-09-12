@@ -1,8 +1,7 @@
 import React from 'react';
 import Post from './Post/Post'
 import mod from './MyPosts.module.css';
-import { actionCreatorAddPost, actionCreatorUpdateTextNewPost } from '../../../../redux/reducerProfile';
-import { actionCreatorIsPressSend } from '../../../../redux/data';
+import { actionCreatorAddPost, actionCreatorUpdateTextNewPost, actionCreatorIsPressPost } from '../../../../redux/reducerProfile';
 
 
 
@@ -17,8 +16,8 @@ const MyPosts = (props) => {
         updateTextNewPost = (e) => {
             props.dispatch(actionCreatorUpdateTextNewPost(e.target.value));
         },
-        isPressSend = (e) => {
-            props.dispatch(actionCreatorIsPressSend(e));
+        isPressPost = (e) => {
+            props.dispatch(actionCreatorIsPressPost(e));
         }
     return (
         <div className={mod.posts}>
@@ -28,7 +27,7 @@ const MyPosts = (props) => {
                     <textarea placeholder="Write about your mood..."
                         value={textNewPost}
                         onChange={updateTextNewPost}
-                        onKeyDown={isPressSend} />
+                        onKeyDown={isPressPost} />
                     <input type="submit" onClick={addPost} />
                 </form>
             </div>
