@@ -1,24 +1,23 @@
 import React from 'react';
-import Post from './Post/Post'
 import mod from './MyPosts.module.css';
-import { actionCreatorAddPost, actionCreatorUpdateTextNewPost, actionCreatorIsPressPost } from '../../../../redux/reducerProfile';
 
 
 
 const MyPosts = (props) => {
 
-    let posts = props.postData.map(p => <Post mess={p.mess} date={p.date} />),
+    let posts = props.posts,
         textNewPost = props.textNewPost,
         addPost = (e) => {
             e.preventDefault();
-            props.dispatch(actionCreatorAddPost());
+            props.addPost();
         },
         updateTextNewPost = (e) => {
-            props.dispatch(actionCreatorUpdateTextNewPost(e.target.value));
+            props.updateTextNewPost(e);
         },
         isPressPost = (e) => {
-            props.dispatch(actionCreatorIsPressPost(e));
+            props.isPressPost(e);
         }
+        
     return (
         <div className={mod.posts}>
             <h3>My posts</h3>

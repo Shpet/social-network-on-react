@@ -18,7 +18,7 @@
     max-width  : 800px;
     width      : auto;
     display    : block;
-    white-space: normal;
+    white-space: pre-line;
 }
 
 .message .dateMess {

@@ -6,13 +6,13 @@ const NewMessage = (props) => {
     let textNewMess = props.textNewMess,
         sendMess = (e) => {
             e.preventDefault();
-            props.dispatch(actionCreatorSendMess());
+            props.sendMess();
         },
         updateTextSendMess = (e) => {
-            props.dispatch(actionCreatorUpdateTextMessage(e.target.value));
+            props.updateTextSendMess(e);
         },
         isPressSend = (e) => {
-            props.dispatch(actionCreatorIsPressSend(e));
+            props.isPressSend(e);
         }
     return (
         <form className={mod.newMessage}>

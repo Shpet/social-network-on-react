@@ -16,5 +16,5 @@
     max-width: 800px;
     width: auto;
     display: block;
-    white-space: break-spaces;
+    white-space: pre-line;
   }

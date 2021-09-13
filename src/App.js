@@ -12,7 +12,9 @@ const App = (props) => {
       <div className="app-wrap">
         <Header />
         <Navbar data={props.data.navbar} />
-        <Content data={props.data.content} dispatch={props.dispatch} />
+        <Content profilePage={props.data.profilePage}
+          messagePage={props.data.messagePage}
+          dispatch={props.dispatch} />
       </div>
     </BrowserRouter>
   );

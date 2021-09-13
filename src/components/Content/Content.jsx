@@ -9,11 +9,11 @@ const Content = (props) => {
     return (
         <main>
             <Route exact path="/" render={() => <Profile
-                data={props.data.profilePage}
+                data={props.profilePage}
                 dispatch={props.dispatch} />}
             />
             <Route path="/messages" render={() => <Messages
-                data={props.data.messagePage}
+                data={props.messagePage}
                 dispatch={props.dispatch}
             />} />
             <Route path="/news" render={() => <News />} />

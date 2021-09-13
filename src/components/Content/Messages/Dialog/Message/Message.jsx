@@ -5,6 +5,7 @@ const Message = (props) => {
         imgAlt = props.imgAlt,
         textMess = props.textMess,
         dateMess = props.dateMess;
+
     return (
         <div className={mod.message}>
             <img src={imgUrl} alt={imgAlt} />

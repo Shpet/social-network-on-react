@@ -1,16 +1,15 @@
 
-import { NavLink } from 'react-router-dom';
 import Companions from './Companions/Companions';
-import Dialog from './Dialog/Dialog';
+import DialogContainer from './Dialog/DialogContainer';
 import mod from './Messages.module.css';
 
 const Messages = (props) => {
     return (
         <div className={mod.messWrap}>
-            <Companions companionsData={props.data.companionsData} />
-            <Dialog messageData={props.data.messageData}
+            <Companions companionsData={props.data.messagePage.companionsData} />
+            <DialogContainer messageData={props.data.messagePage.messageData}
                     dispatch={props.dispatch}
-                    textNewMess={props.data.textNewMess} 
+                    textNewMess={props.data.messagePage.textNewMess} 
                      />
         </div>
     )
