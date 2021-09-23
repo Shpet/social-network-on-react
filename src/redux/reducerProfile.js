@@ -3,14 +3,12 @@ const TYPE = 'ADD-POST',
     IS_PRESS_POST = 'IS-PRESS-POST';
 
 let initialState = {
-    profilePage: {
-        postData: [
-            { id: 0, mess: "he href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles.", date: "01.03.2018" },
-            { id: 1, mess: "First post", date: "01.06.2016" },
-            { id: 2, mess: "To ignore, add // eslint-disable-next-line to the line before.", date: "31.02.2017" },
-        ],
-        textNewPost: ''
-    }
+    postData: [
+        { id: 0, mess: "he href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles.", date: "01.03.2018" },
+        { id: 1, mess: "First post", date: "01.06.2016" },
+        { id: 2, mess: "To ignore, add // eslint-disable-next-line to the line before.", date: "31.02.2017" },
+    ],
+    textNewPost: ''
 }
 const reducerProfile = (state = initialState, action) => {
     switch (action.type) {
@@ -20,9 +18,11 @@ const reducerProfile = (state = initialState, action) => {
                 return addPost(state);
             }
         case POST_TEXT: {
-            let stateCopy = { ...state };
-            stateCopy.profilePage.textNewPost = action.textNewPost;
-            return stateCopy;
+            return {
+                ...state,
+                textNewPost: action.textNewPost
+            };
+
         }
         case IS_PRESS_POST:
             let enter = false,
@@ -47,18 +47,20 @@ const reducerProfile = (state = initialState, action) => {
 
 function addPost(state) {
 
-    let stateCopy = { ...state };
-    if (state.profilePage.textNewPost.trim()) {
+    let stateCopy;
+    if (state.textNewPost.trim()) {
         const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
         let newPost = {
             id: 3,
-            mess: state.profilePage.textNewPost,
+            mess: state.textNewPost,
             date: dateNow,
         }
 
-        stateCopy.profilePage.postData = [...state.profilePage.postData];
-        stateCopy.profilePage.postData.unshift(newPost);
-        stateCopy.profilePage.textNewPost = '';
+        stateCopy = {
+            ...state,
+            postData: [newPost, ...state.postData],
+            textNewPost: ''
+        }
     }
     return stateCopy;
 }

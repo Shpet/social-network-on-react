@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
 
-    let posts = state.profilePage.profilePage.postData.map(p => <Post mess={p.mess} date={p.date} />),
-        textNewPost = state.profilePage.profilePage.textNewPost;
+    let posts = state.profilePage.postData.map(p => <Post mess={p.mess} date={p.date} />),
+        textNewPost = state.profilePage.textNewPost;
 
     return {
         posts: posts,
