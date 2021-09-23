@@ -1,5 +1,5 @@
 const TYPE = 'SEND-MESS',
-    POST_TEXT = 'UPDATE-TEXT-SEND-MESS',
+    SEND_TEXT = 'UPDATE-TEXT-SEND-MESS',
     IS_PRESS_SEND = 'IS-PRESS-SEND';
 
 let initialState = {
@@ -25,11 +25,15 @@ let initialState = {
 const reducerMessage = (state = initialState, action) => {
     switch (action.type) {
         case TYPE:
-            sendMess();
-            return state;
-        case POST_TEXT:
-            state.messagePage.textNewMess = action.textNewMess;
-            return state;
+            {
+                action.e.preventDefault();
+                return sendMess(state);
+            }
+        case SEND_TEXT: {
+            let stateCopy = { ...state };
+            stateCopy.messagePage.textNewMess = action.textNewMess;
+            return stateCopy;
+        }
         case IS_PRESS_SEND:
             let enter = false,
                 shift = false;
@@ -43,34 +47,40 @@ const reducerMessage = (state = initialState, action) => {
                 action.e.preventDefault();
                 enter = false;
                 shift = false;
-                sendMess();
+                return sendMess(state);
             }
             return state;
         default:
             return state;
     }
 
-    function sendMess() {
-        if (state.messagePage.textNewMess.trim()) {
-            const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
-            let sendMess = {
-                imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo",
-                imgAlt: "You",
-                textMess: state.messagePage.textNewMess,
-                dateMess: dateNow,
-            } 
-            state.messagePage.messageData.push(sendMess);
-            state.messagePage.textNewMess = '';
-        }
-    }
-}
 
+}
+function sendMess(state) {
+    let stateCopy = { ...state };
+    if (state.messagePage.textNewMess.trim()) {
+        const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
+        let sendMess = {
+            imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo",
+            imgAlt: "You",
+            textMess: state.messagePage.textNewMess,
+            dateMess: dateNow,
+        }
+
+        stateCopy.messagePage.messageData = [...state.messagePage.messageData];
+        stateCopy.messagePage.messageData.push(sendMess);
+        debugger;
+        stateCopy.messagePage.textNewMess = '';
+    }
+    return stateCopy;
+}
 export const
-    actionCreatorSendMess = () => ({
-        type: TYPE
+    actionCreatorSendMess = (event) => ({
+        type: TYPE,
+        e: event
     }),
     actionCreatorUpdateTextMessage = text => ({
-        type: POST_TEXT,
+        type: SEND_TEXT,
         textNewMess: text
     }),
     actionCreatorIsPressSend = event => ({

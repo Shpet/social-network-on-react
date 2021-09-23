@@ -10,6 +10,10 @@ let initialState = {
     }
 };
 
-const reducerNavbar = state => state = initialState;
+const reducerNavbar = (state=initialState) => {
+    let stateCopy = {...state};
+
+    return stateCopy;
+}
 
 export default reducerNavbar;

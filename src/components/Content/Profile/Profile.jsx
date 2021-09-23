@@ -1,7 +1,7 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import mod from './Profile.module.css';
 
-const Profile = (props) => {
+const Profile = () => {
   return (
     <div>
       <div className={mod['banner-img']} style={{
@@ -24,9 +24,7 @@ const Profile = (props) => {
           </div>
         </div>
       </div>
-      <MyPostsContainer postData={props.data.profilePage.postData} 
-               textNewPost={props.data.profilePage.textNewPost}
-               dispatch={props.dispatch} />
+      <MyPostsContainer />
     </div>
   )
 }

@@ -3,25 +3,15 @@ import { actionCreatorIsPressSend, actionCreatorSendMess, actionCreatorUpdateTex
 import mod from './NewMessage.module.css';
 
 const NewMessage = (props) => {
-    let textNewMess = props.textNewMess,
-        sendMess = (e) => {
-            e.preventDefault();
-            props.sendMess();
-        },
-        updateTextSendMess = (e) => {
-            props.updateTextSendMess(e);
-        },
-        isPressSend = (e) => {
-            props.isPressSend(e);
-        }
+
     return (
         <form className={mod.newMessage}>
             <textarea placeholder="Enter your message"
-                value={textNewMess}
-                onChange={updateTextSendMess}
-                onKeyDown={isPressSend}></textarea>
+                value={props.textNewMess}
+                onChange={props.updateTextSendMess}
+                onKeyDown={props.isPressSend}></textarea>
             <input type="submit" value="отправить"
-                onClick={sendMess} />
+                onClick={props.sendMess} />
         </form>
     )
 }

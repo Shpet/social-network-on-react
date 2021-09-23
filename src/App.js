@@ -1,20 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
-import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Content/Profile/Profile';
 import Content from './components/Content/Content';
 import { BrowserRouter } from 'react-router-dom';
+import NavbarContainer from './components/Navbar/NavbarContainer';
 
-const App = (props) => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrap">
         <Header />
-        <Navbar data={props.data.navbar} />
-        <Content profilePage={props.data.profilePage}
-          messagePage={props.data.messagePage}
-          dispatch={props.dispatch} />
+        <NavbarContainer  />
+        <Content />
       </div>
     </BrowserRouter>
   );

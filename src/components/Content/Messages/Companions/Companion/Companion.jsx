@@ -9,8 +9,8 @@ const Companion = (props) => {
 
     return (
         <NavLink to={path} className={mod.companion} activeClassName={mod.companionActive}>
-            <img src={imgUrl} alt={props.imgAlt} />
-            <span>{props.name}</span>
+            <img src={imgUrl} alt={imgAlt} />
+            <span>{name}</span>
         </NavLink>
     )
 }

@@ -15,11 +15,15 @@ let initialState = {
 const reducerProfile = (state = initialState, action) => {
     switch (action.type) {
         case TYPE:
-            addPost();
-            return state;
-        case POST_TEXT:
-            state.profilePage.textNewPost = action.textNewPost;
-            return state;
+            {
+                action.e.preventDefault();
+                return addPost(state);
+            }
+        case POST_TEXT: {
+            let stateCopy = { ...state };
+            stateCopy.profilePage.textNewPost = action.textNewPost;
+            return stateCopy;
+        }
         case IS_PRESS_POST:
             let enter = false,
                 shift = false;
@@ -33,30 +37,35 @@ const reducerProfile = (state = initialState, action) => {
                 action.e.preventDefault();
                 enter = false;
                 shift = false;
-                addPost();
+                return addPost(state);
             }
             return state;
         default:
             return state;
     }
-
-    function addPost() {
-        if (state.profilePage.textNewPost.trim()) {
-            const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
-            let newPost = {
-                id: 3,
-                mess: state.profilePage.textNewPost,
-                date: dateNow,
-            }
-            state.profilePage.postData.unshift(newPost);
-            state.profilePage.textNewPost = '';
-        }
-    }
 }
 
+function addPost(state) {
+
+    let stateCopy = { ...state };
+    if (state.profilePage.textNewPost.trim()) {
+        const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
+        let newPost = {
+            id: 3,
+            mess: state.profilePage.textNewPost,
+            date: dateNow,
+        }
+
+        stateCopy.profilePage.postData = [...state.profilePage.postData];
+        stateCopy.profilePage.postData.unshift(newPost);
+        stateCopy.profilePage.textNewPost = '';
+    }
+    return stateCopy;
+}
 export const
-    actionCreatorAddPost = () => ({
-        type: TYPE
+    actionCreatorAddPost = (event) => ({
+        type: TYPE,
+        e: event
     }),
     actionCreatorUpdateTextNewPost = text => ({
         type: POST_TEXT,

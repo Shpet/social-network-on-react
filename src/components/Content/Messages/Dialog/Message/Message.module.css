@@ -19,6 +19,7 @@
     width      : auto;
     display    : block;
     white-space: pre-line;
+    flex-basis: 100%;
 }
 
 .message .dateMess {
