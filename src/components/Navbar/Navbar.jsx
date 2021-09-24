@@ -9,16 +9,19 @@ const Navbar = (props) => {
       <div className={mod.nav_wrapper} >
         <nav>
           <div>
-            <NavLink exact to="/" activeClassName={mod.activeLink}>Моя страница</NavLink>
+            <NavLink exact to="/" activeClassName={mod.activeLink}>My Profile</NavLink>
           </div>
           <div>
-            <NavLink to="/messages" activeClassName={mod.activeLink}>Сообщения</NavLink>
+            <NavLink to="/messages" activeClassName={mod.activeLink}>Messages</NavLink>
           </div>
           <div>
-            <NavLink to="/news" activeClassName={mod.activeLink}>Новости</NavLink>
+            <NavLink to="/users" activeClassName={mod.activeLink}>Users</NavLink>
           </div>
           <div>
-            <NavLink to="/music" activeClassName={mod.activeLink}>Музыка</NavLink>
+            <NavLink to="/news" activeClassName={mod.activeLink}>News</NavLink>
+          </div>
+          <div>
+            <NavLink to="/music" activeClassName={mod.activeLink}>Music</NavLink>
           </div>
         </nav>
       </div>

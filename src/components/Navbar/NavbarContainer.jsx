@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 let mapStateToProps = (state) => {
     let friends = state.navbar.friends
         .sort((a, b) => b.isOnline - a.isOnline)
-        .map(c => <Friend id={c.id} name={c.name} imgUrl={c.imgUrl} state={c.isOnline} />);
+        .map(c => <Friend key={c.id} id={c.id} name={c.name} imgUrl={c.imgUrl} state={c.isOnline} />);
 
     return {
         friends: friends
