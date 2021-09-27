@@ -3,11 +3,10 @@ const FOLLOWED = 'FOLLOWED',
 
 
 let initialState = {
-  users: [ ]
+    users: []
 }
 
 const reducerUsers = (state = initialState, action) => {
-
     switch (action.type) {
         case FOLLOWED: {
             return {
@@ -20,8 +19,8 @@ const reducerUsers = (state = initialState, action) => {
             }
         }
         case SET_USERS: {
-            
-            return { ...state, users: [ ...state.users, ...action.users ] };
+
+            return { ...state, users: [...state.users, ...action.users] };
         }
         default: {
             return state;
