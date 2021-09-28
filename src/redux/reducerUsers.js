@@ -1,9 +1,13 @@
 const FOLLOWED = 'FOLLOWED',
-    SET_USERS = 'SET_USERS'
+    SET_USERS = 'SET_USERS',
+    TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT',
+    SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
 
 let initialState = {
-    users: []
+    users: [],
+    currentPage: 1,
+    totalUsersCount: 0,
 }
 
 const reducerUsers = (state = initialState, action) => {
@@ -22,6 +26,12 @@ const reducerUsers = (state = initialState, action) => {
 
             return { ...state, users: [...state.users, ...action.users] };
         }
+        case TOTAL_USERS_COUNT: {
+            return {...state, totalUsersCount: action.count}
+        }
+        case SET_CURRENT_PAGE: {
+            return {...state, currentPage: action.count}
+        }
         default: {
             return state;
         }
@@ -31,11 +41,19 @@ const reducerUsers = (state = initialState, action) => {
 export const
     actionCreatorFollowed = (userId) => ({
         type: FOLLOWED,
-        userId: userId
+        userId
     }),
     actionCreatorSetUsers = (users) => ({
         type: SET_USERS,
-        users: users
+        users
+    }),
+    actionCreatorSetTotalUsersCount = (count) => ({
+        type: TOTAL_USERS_COUNT,
+        count
+    }),
+    actionCreatorSetCurrentPage = (count) => ({
+        type: SET_CURRENT_PAGE,
+        count
     });
 
 export default reducerUsers;
