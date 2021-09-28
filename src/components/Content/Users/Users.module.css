@@ -2,8 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    padding: 25px;
-    background-color: rgb(41, 41, 41);
+    padding: 25px 25px 0;
     justify-content: space-evenly;
 }
 .userWrap{
@@ -57,4 +56,21 @@
 .btn.follow:hover{
     background-color: limegreen;
     color: #000;
+}
+
+.loadMore{
+    display: flex;
+    background-color: #000;
+    outline: none;
+    border: 2px solid rgb(206, 48, 48);
+    padding: 10px 25px;
+    color: rgb(206, 48, 48);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+.loadMore:disabled{
+    color: darkred;
+    border-color: darkred;
 }

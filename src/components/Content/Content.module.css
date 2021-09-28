@@ -4,4 +4,6 @@ main {
     background-color: #000;
     color           : #c58383;
     height: min-content;
+    padding-bottom: 30px ;
+    position: relative;
 }

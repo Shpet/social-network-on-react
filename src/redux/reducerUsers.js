@@ -1,13 +1,15 @@
 const FOLLOWED = 'FOLLOWED',
     SET_USERS = 'SET_USERS',
     TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT',
-    SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+    SET_CURRENT_PAGE = 'SET_CURRENT_PAGE',
+    IS_LOADING_USERS = 'IS_LOADING_USERS'
 
 
 let initialState = {
     users: [],
     currentPage: 1,
     totalUsersCount: 0,
+    isLoadingUsers: false
 }
 
 const reducerUsers = (state = initialState, action) => {
@@ -27,10 +29,13 @@ const reducerUsers = (state = initialState, action) => {
             return { ...state, users: [...state.users, ...action.users] };
         }
         case TOTAL_USERS_COUNT: {
-            return {...state, totalUsersCount: action.count}
+            return { ...state, totalUsersCount: action.count }
         }
         case SET_CURRENT_PAGE: {
-            return {...state, currentPage: action.count}
+            return { ...state, currentPage: action.count }
+        }
+        case IS_LOADING_USERS: {
+            return {...state, isLoadingUsers: !state.isLoadingUsers}
         }
         default: {
             return state;
@@ -54,6 +59,9 @@ export const
     actionCreatorSetCurrentPage = (count) => ({
         type: SET_CURRENT_PAGE,
         count
+    }),
+    actionCreatorUpdateIsLoadingUsers = () => ({
+        type: IS_LOADING_USERS
     });
 
 export default reducerUsers;

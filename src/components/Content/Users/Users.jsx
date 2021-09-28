@@ -27,7 +27,7 @@ const Users = (props) => {
             )
             }
 
-            {props.remainingUsers > 0 && <button onClick={props.loadMore}>загрузить ещё 12 из {props.remainingUsers}</button>}
+            {props.remainingUsers > 0 && <button onClick={props.loadMore} className={mod.loadMore}>загрузить ещё 12 из {props.remainingUsers}</button>}
         </div >
     )
 };
