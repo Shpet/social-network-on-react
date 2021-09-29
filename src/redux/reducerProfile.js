@@ -69,9 +69,9 @@ export const
         type: TYPE,
         e: event
     }),
-    actionCreatorUpdateTextNewPost = text => ({
+    actionCreatorUpdateTextNewPost = e => ({
         type: POST_TEXT,
-        textNewPost: text
+        textNewPost: e.target.value
     }),
     actionCreatorIsPressPost = event => ({
         type: IS_PRESS_POST,

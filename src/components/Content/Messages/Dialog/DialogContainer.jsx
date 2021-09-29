@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 
 let mapStateToProps = (state) => {
-    
+
     let messages = state.messagePage.messageData.map(m => <Message key={m.id} imgUrl={m.imgUrl} imgAlt={m.imgAlt} textMess={m.textMess} dateMess={m.dateMess} />)
 
     return {
@@ -13,22 +13,12 @@ let mapStateToProps = (state) => {
         textNewMess: state.messagePage.textNewMess
     }
 }
-let mapDispatchToProps = (dispatch) => {
 
-    return {
-        sendMess: (e) => {
-            dispatch(actionCreatorSendMess(e));
-        },
-        updateTextSendMess: (e) => {
-            dispatch(actionCreatorUpdateTextMessage(e.target.value));
-        },
-        isPressSend: (e) => {
-            dispatch(actionCreatorIsPressSend(e));
-        },
-    }
-}
-
-const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog);
+const DialogContainer = connect(mapStateToProps, {
+    sendMess: actionCreatorSendMess,
+    updateTextSendMess: actionCreatorUpdateTextMessage,
+    isPressSend: actionCreatorIsPressSend
+})(Dialog);
 
 
 export default DialogContainer;

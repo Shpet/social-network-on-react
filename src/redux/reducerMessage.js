@@ -79,9 +79,9 @@ export const
         type: TYPE,
         e: event
     }),
-    actionCreatorUpdateTextMessage = text => ({
+    actionCreatorUpdateTextMessage = e => ({
         type: SEND_TEXT,
-        textNewMess: text
+        textNewMess: e.target.value
     }),
     actionCreatorIsPressSend = event => ({
         type: IS_PRESS_SEND,

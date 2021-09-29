@@ -49,24 +49,11 @@ const mapStateToProps = (state) => {
         isLoadingUsers: state.usersPage.isLoadingUsers
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        goToFollowed: (userId) => {
-            dispatch(actionCreatorFollowed(userId));
-        },
-        setUsers: (users) => {
-            dispatch(actionCreatorSetUsers(users));
-        },
-        setTotalUsersCount: (count) => {
-            dispatch(actionCreatorSetTotalUsersCount(count));
-        },
-        setCurrentPage: (count) => {
-            dispatch(actionCreatorSetCurrentPage(count));
-        },
-        updateIsLoadingUsers: () => {
-            dispatch(actionCreatorUpdateIsLoadingUsers());
-        }
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+    goToFollowed: actionCreatorFollowed,
+    setUsers: actionCreatorSetUsers,
+    setTotalUsersCount: actionCreatorSetTotalUsersCount,
+    setCurrentPage: actionCreatorSetCurrentPage,
+    updateIsLoadingUsers: actionCreatorUpdateIsLoadingUsers
+})(UsersContainer);

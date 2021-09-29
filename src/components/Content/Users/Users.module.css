@@ -1,76 +1,89 @@
-.usersWrap{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 25px 25px 0;
+.usersWrap {
+    display        : flex;
+    flex-wrap      : wrap;
+    gap            : 15px;
+    padding        : 25px 25px 0;
     justify-content: space-evenly;
 }
-.userWrap{
+
+.userWrap {
     background-color: #000;
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
-    padding: 20px 10px;
-    text-align: center;
-    border: 1px solid rgb(206, 48, 48);
-    flex-basis: 20%;
-    gap: 10px;
-    max-height: 350px; 
-}
-.imgWrap{
-    width: 120px;
-    height: 120px;
-    background-size: contain;
-    background-position: center center;
-    margin: 0 auto;
-    background-repeat: no-repeat;
-    text-align: center;
-    background-color: rgb(41,41,41);
-    border-radius: 5px;
-}
-.buttWrap{
-    margin-top: auto;
-}
-.btn{
-    width: 150px;
-    height: 40px;
-    background-color: transparent;
-    border: 3px solid darkred;
-    color: rgb(206, 48, 48);
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: bold;
-    align-self: flex-end;
-    cursor: pointer;
-    transition: .3s;
-}
-.btn:hover{
-    background-color: darkred;
-    border: none;
-    color: #000;
-}
-.btn.follow{
-    color: limegreen;
-    border-color:limegreen;
-}
-.btn.follow:hover{
-    background-color: limegreen;
-    color: #000;
+    display         : flex;
+    flex-direction  : column;
+    min-width       : 200px;
+    padding         : 20px 10px;
+    text-align      : center;
+    border          : 1px solid rgb(206, 48, 48);
+    flex-basis      : 20%;
+    gap             : 10px;
+    max-height      : 350px;
 }
 
-.loadMore{
-    display: flex;
-    background-color: #000;
-    outline: none;
-    border: 2px solid rgb(206, 48, 48);
-    padding: 10px 25px;
-    color: rgb(206, 48, 48);
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
+.imgWrap {
+    width              : 120px;
+    height             : 120px;
+    background-size    : contain;
+    background-position: center center;
+    margin             : 0 auto;
+    background-repeat  : no-repeat;
+    text-align         : center;
+    background-color   : rgb(41, 41, 41);
+    border-radius      : 5px;
 }
-.loadMore:disabled{
+
+.buttWrap {
+    margin-top: auto;
+}
+
+.btn {
+    width           : 150px;
+    height          : 40px;
+    background-color: transparent;
+    border          : 3px solid darkred;
+    color           : rgb(206, 48, 48);
+    text-transform  : uppercase;
+    font-size       : 16px;
+    font-weight     : bold;
+    align-self      : flex-end;
+    cursor          : pointer;
+    transition      : 0.3s;
+}
+
+.btn:hover {
+    background-color: darkred;
+    border          : none;
+    color           : #000;
+}
+
+.btn.follow {
+    color       : limegreen;
+    border-color: limegreen;
+}
+
+.btn.follow:hover {
+    background-color: limegreen;
+    color           : #000;
+}
+
+.loadMore {
+    display         : flex;
+    background-color: #000;
+    outline         : none;
+    border          : 2px solid rgb(206, 48, 48);
+    padding         : 10px 25px;
+    color           : rgb(206, 48, 48);
+    text-transform  : uppercase;
+    font-weight     : bold;
+    font-size       : 16px;
+    cursor          : pointer;
+    transition      : .2s;
+}
+
+.loadMore:hover {
     color: darkred;
     border-color: darkred;
+}
+
+.loadMore:disabled {
+    opacity: 0;
 }

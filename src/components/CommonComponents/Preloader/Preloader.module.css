@@ -1,11 +1,11 @@
-.preloaderWrap{
-    width: 100px;
-    margin: 0 auto;
-    position: absolute;
-    bottom: -0;
-    left: calc(50% - 50px);
-    height: fit-content;
-  }
-  .preloader{
-    width: 100%;
-  }
+.preloaderWrap {
+  width: 100px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: -0;
+  left: calc(50% - 50px);
+  height: fit-content;
+}
+.preloader {
+  width: 100%;
+}
