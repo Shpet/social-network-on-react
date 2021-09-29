@@ -1,18 +1,21 @@
 import mod from "./Users.module.css";
 import baseImgUrl from "../../../assets/img/user-small.jpg";
+import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
   return (
     <div className={mod.usersWrap}>
       {props.users.map((item) => (
         <div key={item.id} className={mod.userWrap}>
-          <div
-            className={mod.imgWrap}
-            style={{
-              backgroundImage: `url(${item.photos.small ? item.photos.small : baseImgUrl
-                })`,
-            }}
-          ></div>
+          <NavLink to={`profile/${item.id}`}>
+            <div
+              className={mod.imgWrap}
+              style={{
+                backgroundImage: `url(${item.photos.small ? item.photos.small : baseImgUrl
+                  })`,
+              }}
+            ></div>
+          </NavLink>
           <div className={mod.info}>
             <span>{item.name} </span>
           </div>

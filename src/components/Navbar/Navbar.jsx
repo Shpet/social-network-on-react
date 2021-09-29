@@ -9,7 +9,7 @@ const Navbar = (props) => {
       <div className={mod.nav_wrapper} >
         <nav>
           <div>
-            <NavLink exact to="/" activeClassName={mod.activeLink}>My Profile</NavLink>
+            <NavLink to="/profile/me" activeClassName={mod.activeLink}>My Profile</NavLink>
           </div>
           <div>
             <NavLink to="/messages" activeClassName={mod.activeLink}>Messages</NavLink>

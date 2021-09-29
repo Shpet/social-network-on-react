@@ -1,7 +1,7 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import mod from './Profile.module.css';
-
-const Profile = () => {
+// 
+const Profile = (props) => {
   return (
     <div>
       <div className={mod['banner-img']} style={{
@@ -9,18 +9,16 @@ const Profile = () => {
       }}>
       </div>
       <div className={mod.profile}>
-        <div className={mod.profile__avatarWrap}>
-          <img src="https://avatars.mds.yandex.net/get-zen_gallery/3129491/pub_5f735184ece66e29a8651a30_5f735185ece66e29a8651a32/scale_1200" alt="avatar" />
-        </div>
+        <div className={mod.profile__avatarWrap} style={{ backgroundImage: `url(${props.photos.large})` }}></div>
         <div className={mod.profile__text}>
           <div className={mod['profile__text-name']}>
-            <p>Ksenia Hug</p>
+            <p>{props.fullName}</p>
           </div>
           <div className={mod['profile__text-info']}>
-            <p>Birthday: 01.03.2000</p>
-            <p>City: Kiev</p>
-            <p>Telegram: @INeznayka</p>
-            <p>Inst: neznayka_sh</p>
+            <p><b>About me</b>: {props.aboutMe}</p>
+            <p><b>Looking for a job</b>: {props.lookingForAJob ? ' Yes' : ' No'}</p>
+            <p><b>Github:</b> <a href={props.contacts.github} target="_blank" rel="noreferrer"> {props.contacts.github}</a></p>
+            <p><b>Inst:</b> <a href={props.contacts.instagram} target="_blank" rel="noreferrer"> {props.contacts.instagram}</a></p>
           </div>
         </div>
       </div>
