@@ -9,7 +9,9 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.updateIsLoadingUsers();
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=12&page=${this.props.currentPage}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=12&page=${this.props.currentPage}`, {
+            withCredentials: true
+        })
             .then(response => {
                 this.props.updateIsLoadingUsers();
                 this.props.setUsers(response.data.items);
@@ -20,7 +22,9 @@ class UsersContainer extends React.Component {
         e.target.disabled = true;
         this.props.updateIsLoadingUsers();
         this.props.setCurrentPage(this.props.currentPage + 1);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=12&page=${this.props.currentPage + 1}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=12&page=${this.props.currentPage + 1}`, {
+            withCredentials: true
+        })
             .then(response => {
                 e.target.disabled = false;
                 this.props.updateIsLoadingUsers();

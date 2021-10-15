@@ -1,5 +1,4 @@
 import React from 'react';
-import { actionCreatorIsPressSend, actionCreatorSendMess, actionCreatorUpdateTextMessage } from '../../../../../redux/reducerMessage';
 import mod from './NewMessage.module.css';
 
 const NewMessage = (props) => {

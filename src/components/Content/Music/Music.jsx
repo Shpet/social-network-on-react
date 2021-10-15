@@ -1,4 +1,3 @@
-import mod from './Music.module.css';
 
 const Music = () => {
     return (

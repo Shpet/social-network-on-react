@@ -1,6 +1,7 @@
 import mod from "./Users.module.css";
 import baseImgUrl from "../../../assets/img/user-small.jpg";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const Users = (props) => {
   return (
@@ -28,13 +29,35 @@ const Users = (props) => {
             {item.followed ? (
               <button
                 className={mod.btn}
-                onClick={() => props.goToFollowed(item.id)}>
+                onClick={() => {
+                  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {
+                    withCredentials: true,
+                    headers: {
+                      "API-KEY": 'fa054d18-01a6-4959-93b2-7241c273e8f0'
+                    }
+                  })
+                    .then(response => {
+                      if (response.data.resultCode === 0) props.goToFollowed(item.id)
+                    });
+                }
+                }>
                 Unfollow
               </button>
             ) : (
               <button
                 className={`${mod.follow} ${mod.btn}`}
-                onClick={() => props.goToFollowed(item.id)}>
+                onClick={() => {
+                  axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, {
+                    withCredentials: true,
+                    headers: {
+                      "API-KEY": 'fa054d18-01a6-4959-93b2-7241c273e8f0'
+                    }
+                  })
+                    .then(response => {
+                      if (response.data.resultCode === 0) props.goToFollowed(item.id)
+                    });
+                }
+                }>
                 Follow
               </button>
             )}

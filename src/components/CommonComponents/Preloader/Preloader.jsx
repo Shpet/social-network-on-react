@@ -4,7 +4,7 @@ import mod from "./Preloader.module.css";
 const Preloader = () => {
   return (
     <div className={mod.preloaderWrap}>
-      <img src={preloader} className={mod.preloader} />
+      <img src={preloader} alt="Preloader" className={mod.preloader} />
     </div>
   );
 };
