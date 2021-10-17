@@ -32,6 +32,7 @@ const reducerUsers = (state = initialState, action) => {
             return { ...state, totalUsersCount: action.count }
         }
         case SET_CURRENT_PAGE: {
+            
             return { ...state, currentPage: action.count }
         }
         case IS_LOADING: {

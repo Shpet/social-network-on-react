@@ -1,14 +1,14 @@
 import mod from "./Users.module.css";
 import baseImgUrl from "../../../assets/img/user-small.jpg";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
+import { usersAPI } from "../../../API/usersAPI";
 
 const Users = (props) => {
   return (
     <div className={mod.usersWrap}>
       {props.users.map((item) => (
         <div key={item.id} className={mod.userWrap}>
-          <NavLink to={`profile/${item.id}`}>
+          <NavLink to={`/profile/${item.id}`}>
             <div
               className={mod.imgWrap}
               style={{
@@ -30,14 +30,10 @@ const Users = (props) => {
               <button
                 className={mod.btn}
                 onClick={() => {
-                  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {
-                    withCredentials: true,
-                    headers: {
-                      "API-KEY": 'fa054d18-01a6-4959-93b2-7241c273e8f0'
-                    }
-                  })
+
+                  usersAPI.unfollow(item.id)
                     .then(response => {
-                      if (response.data.resultCode === 0) props.goToFollowed(item.id)
+                      if (response.resultCode === 0) props.goToFollowed(item.id)
                     });
                 }
                 }>
@@ -47,14 +43,10 @@ const Users = (props) => {
               <button
                 className={`${mod.follow} ${mod.btn}`}
                 onClick={() => {
-                  axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, {
-                    withCredentials: true,
-                    headers: {
-                      "API-KEY": 'fa054d18-01a6-4959-93b2-7241c273e8f0'
-                    }
-                  })
+
+                  usersAPI.follow(item.id)
                     .then(response => {
-                      if (response.data.resultCode === 0) props.goToFollowed(item.id)
+                      if (response.resultCode === 0) props.goToFollowed(item.id)
                     });
                 }
                 }>

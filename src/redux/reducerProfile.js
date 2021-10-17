@@ -17,6 +17,7 @@ let initialState = {
     baseImgUrl: 'https://avatars.mds.yandex.net/get-zen_gallery/3129491/pub_5f735184ece66e29a8651a30_5f735185ece66e29a8651a32/scale_1200'
 }
 const reducerProfile = (state = initialState, action) => {
+    
     switch (action.type) {
         case TYPE:
             {
