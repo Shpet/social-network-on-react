@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 import { thunkGetProfile } from '../../../redux/reducerProfile';
 import Preloader from '../../CommonComponents/Preloader/Preloader';
 import Profile from './Profile';
@@ -13,6 +13,11 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
+
+    if (!this.props.isAuth && this.props.match.params.userId === 'me') {
+      return <Redirect to='/login' />
+    }
+
     let profile = { ...this.props.profile };
 
     if (this.props.profile) {
@@ -31,7 +36,8 @@ const mapPropsToState = (state) => {
   return {
     isLoadingProfile: state.profilePage.isLoadingProfile,
     profile: state.profilePage.profile,
-    baseImgUrl: state.profilePage.baseImgUrl
+    baseImgUrl: state.profilePage.baseImgUrl,
+    isAuth: state.auth.isAuth
   }
 }
 
