@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { profileAPI } from '../../../API/profileAPI';
-import { actionCreatorSetUserProfile, actionCreatorUpdateIsLoadingProfile } from '../../../redux/reducerProfile';
+import { thunkGetProfile } from '../../../redux/reducerProfile';
 import Preloader from '../../CommonComponents/Preloader/Preloader';
 import Profile from './Profile';
 
@@ -10,40 +9,7 @@ import Profile from './Profile';
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-
-
-
-    if (this.props.match.params.userId === 'me') {
-      this.props.updateIsLoadingProfile();
-
-      profileAPI.getAuthInfo()
-        .then(response => {
-          if (response.resultCode === 0) {
-
-            let id = response.data.id;
-
-            profileAPI.getProfile(id)
-              .then(response => {
-                this.props.updateIsLoadingProfile();
-                this.props.setUserProfile(response);
-
-              });
-          }
-
-        });
-    }
-    else {
-
-      this.props.updateIsLoadingProfile();
-      profileAPI.getProfile(this.props.match.params.userId)
-        .then(response => {
-          this.props.updateIsLoadingProfile();
-          this.props.setUserProfile(response);
-        })
-        .catch(response => {
-          this.props.updateIsLoadingProfile();
-        });
-    }
+    this.props.getProfile(this.props.match.params.userId);
   }
 
   render() {
@@ -72,6 +38,5 @@ const mapPropsToState = (state) => {
 let ProfileContainerWithRouter = withRouter(ProfileContainer);
 
 export default connect(mapPropsToState, {
-  updateIsLoadingProfile: actionCreatorUpdateIsLoadingProfile,
-  setUserProfile: actionCreatorSetUserProfile
+  getProfile: thunkGetProfile
 })(ProfileContainerWithRouter);

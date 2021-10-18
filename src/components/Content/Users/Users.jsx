@@ -1,10 +1,8 @@
 import mod from "./Users.module.css";
 import baseImgUrl from "../../../assets/img/user-small.jpg";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../../API/usersAPI";
 
 const Users = (props) => {
-
   return (
     <div className={mod.usersWrap}>
       {props.users.map((item) => (
@@ -31,12 +29,7 @@ const Users = (props) => {
               <button
                 className={mod.btn}
                 onClick={(e) => {
-                  e.target.disabled = true;
-                  usersAPI.unfollow(item.id)
-                    .then(response => {
-                      e.target.disabled = false;
-                      if (response.resultCode === 0) props.goToFollowed(item.id)
-                    }).catch(() => e.target.disabled = false);
+                  props.unfollow(item.id, e.target);
                 }
                 }>
                 Unfollow
@@ -45,12 +38,7 @@ const Users = (props) => {
               <button
                 className={`${mod.follow} ${mod.btn}`}
                 onClick={(e) => {
-                  e.target.disabled = true;
-                  usersAPI.follow(item.id)
-                    .then(response => {
-                      e.target.disabled = false;
-                      if (response.resultCode === 0) props.goToFollowed(item.id)
-                    }).catch(() => e.target.disabled = false);
+                  props.follow(item.id, e.target)
                 }
                 }>
                 Follow

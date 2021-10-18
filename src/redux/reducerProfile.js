@@ -1,3 +1,5 @@
+import { profileAPI } from "../API/profileAPI";
+
 const TYPE = 'ADD-POST',
     POST_TEXT = 'UPDATE-TEXT-NEW-POST',
     IS_PRESS_POST = 'IS-PRESS-POST',
@@ -17,7 +19,7 @@ let initialState = {
     baseImgUrl: 'https://avatars.mds.yandex.net/get-zen_gallery/3129491/pub_5f735184ece66e29a8651a30_5f735185ece66e29a8651a32/scale_1200'
 }
 const reducerProfile = (state = initialState, action) => {
-    
+
     switch (action.type) {
         case TYPE:
             {
@@ -96,5 +98,42 @@ export const
     }),
     actionCreatorUpdateIsLoadingProfile = () => ({
         type: IS_LOADING
-    })
+    }),
+
+
+    thunkGetProfile = (userId) => {
+        return dispatch => {
+            if (userId === 'me') {
+                dispatch(actionCreatorUpdateIsLoadingProfile());
+
+                profileAPI.getAuthInfo()
+                    .then(response => {
+                        if (response.resultCode === 0) {
+
+                            let id = response.data.id;
+
+                            profileAPI.getProfile(id)
+                                .then(response => {
+                                    dispatch(actionCreatorUpdateIsLoadingProfile());
+                                    dispatch(actionCreatorSetUserProfile(response));
+
+                                });
+                        }
+
+                    });
+            }
+            else {
+
+                dispatch(actionCreatorUpdateIsLoadingProfile());
+                profileAPI.getProfile(userId)
+                    .then(response => {
+                        dispatch(actionCreatorUpdateIsLoadingProfile());
+                        dispatch(actionCreatorSetUserProfile(response));
+                    })
+                    .catch(response => {
+                        dispatch(actionCreatorUpdateIsLoadingProfile());
+                    });
+            }
+        }
+    }
 export default reducerProfile;

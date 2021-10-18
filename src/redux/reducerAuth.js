@@ -1,3 +1,5 @@
+import { profileAPI } from "../API/profileAPI";
+
 const SET_USER_DATA = 'SET_USER_DATA'
 
 
@@ -26,7 +28,20 @@ export const
         userId,
         email,
         login
-    })
+    }),
+
+    thunkAuthInfo = () => {
+        return dispatch => {
+            profileAPI.getAuthInfo()
+                .then(response => {
+                    if (response.resultCode === 0) {
+                        let { id, email, login } = response.data;
+                        dispatch(actionCreatorSetUserData(id, email, login));
+                    }
+
+                });
+        }
+    }
 
 
 export default reducerAuth;

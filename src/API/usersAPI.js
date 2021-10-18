@@ -1,17 +1,17 @@
 import { instance } from "./instance";
 
 export const usersAPI = {
-    getUsers(currentPage) {
-        return instance.get(`users?count=12&page=${currentPage}`)
-            .then(response => response.data);
+    async getUsers(currentPage) {
+        const response = await instance.get(`users?count=12&page=${currentPage}`);
+        return response.data;
     },
-    unfollow(id) {
-        return instance.delete(`follow/${id}`)
-            .then(response => response.data);
+    async unfollow(id) {
+        const response = await instance.delete(`follow/${id}`);
+        return response.data;
     },
-    follow(id) {
-        return instance.post(`follow/${id}`)
-            .then(response => response.data);
+    async follow(id) {
+        const response = await instance.post(`follow/${id}`);
+        return response.data;
     }
 }
 
