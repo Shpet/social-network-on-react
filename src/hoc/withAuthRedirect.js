@@ -4,15 +4,24 @@ import { Redirect } from "react-router"
 
 
 const mapPropsToState = state => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
 })
 
 export const withAuthRedirect = (Component) => {
     class RedirectComponent extends React.Component {
         render() {
-            // && this.props.match.params.userId === 'me'
+
+
             if (!this.props.isAuth) {
+
+                if (this.props.match) {
+                    if (Number.isInteger(+this.props.match.params.userId)) {
+                        return <Component {...this.props} />
+
+                    }
+                }
                 return <Redirect to='/login' />
+
             }
 
             return <Component {...this.props} />

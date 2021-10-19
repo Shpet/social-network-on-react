@@ -17,6 +17,8 @@
  .profile__avatarWrap {
    width              : 200px;
    height             : 200px;
+   min-width          : 200px;
+   min-height         : 200px;
    background-repeat  : no-repeat;
    background-size    : contain;
    background-position: center;
@@ -28,11 +30,13 @@
    display       : flex;
    flex-direction: column;
  }
- .profile__text-info a{
-   color: darksalmon;
+
+ .profile__text-info a {
+   color          : darksalmon;
    text-decoration: none;
  }
- .profile__text-info a:hover{
+
+ .profile__text-info a:hover {
    text-decoration: underline;
  }
 

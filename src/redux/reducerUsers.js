@@ -2,6 +2,7 @@ import { usersAPI } from "../API/usersAPI"
 
 const FOLLOWED = 'FOLLOWED',
     SET_USERS = 'SET_USERS',
+    LOAD_USERS = 'LOAD_USERS',
     TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT',
     SET_CURRENT_PAGE = 'SET_CURRENT_PAGE',
     IS_LOADING = 'IS_LOADING'
@@ -28,7 +29,11 @@ const reducerUsers = (state = initialState, action) => {
         }
         case SET_USERS: {
 
-            return { ...state, users: [...state.users, ...action.users] };
+            return { ...state, users: [...action.users] };
+        }
+        case LOAD_USERS: {
+
+            return { ...state, users: [ ...state.users, ...action.users] };
         }
         case TOTAL_USERS_COUNT: {
             return { ...state, totalUsersCount: action.count }
@@ -53,6 +58,10 @@ export const
     }),
     actionCreatorSetUsers = (users) => ({
         type: SET_USERS,
+        users
+    }),
+    actionCreatorLoadUsers = (users) => ({
+        type: LOAD_USERS,
         users
     }),
     actionCreatorSetTotalUsersCount = (count) => ({
@@ -88,7 +97,7 @@ export const
             usersAPI.getUsers(currentPage + 1).then(response => {
                 btn.disabled = false;
                 dispatch(actionCreatorUpdateIsLoadingUsers());
-                dispatch(actionCreatorSetUsers(response.items));
+                dispatch(actionCreatorLoadUsers(response.items));
             });
         }
     },

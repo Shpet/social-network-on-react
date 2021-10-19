@@ -1,5 +1,6 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import mod from './Profile.module.css';
+import StatusContainer from './Status/StatusContainer';
 // 
 const Profile = (props) => {
   return (
@@ -19,6 +20,8 @@ const Profile = (props) => {
             <p><b>Looking for a job</b>: {props.lookingForAJob ? ' Yes' : ' No'}</p>
             <p><b>Github:</b> <a href={props.contacts.github} target="_blank" rel="noreferrer"> {props.contacts.github}</a></p>
             <p><b>Inst:</b> <a href={props.contacts.instagram} target="_blank" rel="noreferrer"> {props.contacts.instagram}</a></p>
+
+            <StatusContainer />
           </div>
         </div>
       </div>

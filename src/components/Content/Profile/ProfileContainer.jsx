@@ -38,15 +38,11 @@ const mapPropsToState = (state) => {
   }
 }
 
-compose(
+
+
+export default compose(
   connect(mapPropsToState, { getProfile: thunkGetProfile }),
-  withAuthRedirect,
-  withRouter
+  withRouter,
+  withAuthRedirect
+  
 )(ProfileContainer)
-
-let ProfileContainerWithRouter = withRouter(ProfileContainer);
-ProfileContainerWithRouter = withAuthRedirect(ProfileContainerWithRouter);
-
-export default connect(mapPropsToState, {
-  getProfile: thunkGetProfile
-})(ProfileContainerWithRouter);
