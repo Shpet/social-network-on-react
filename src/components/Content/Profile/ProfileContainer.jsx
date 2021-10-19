@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { compose } from 'redux';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import { thunkGetProfile } from '../../../redux/reducerProfile';
 import Preloader from '../../CommonComponents/Preloader/Preloader';
@@ -36,6 +37,12 @@ const mapPropsToState = (state) => {
     baseImgUrl: state.profilePage.baseImgUrl,
   }
 }
+
+compose(
+  connect(mapPropsToState, { getProfile: thunkGetProfile }),
+  withAuthRedirect,
+  withRouter
+)(ProfileContainer)
 
 let ProfileContainerWithRouter = withRouter(ProfileContainer);
 ProfileContainerWithRouter = withAuthRedirect(ProfileContainerWithRouter);
