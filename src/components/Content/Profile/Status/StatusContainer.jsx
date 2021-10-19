@@ -7,14 +7,14 @@ class StatusContainer extends React.Component {
         status: 'mapPropsToState'
     }
 
-    toggleEditMode() {
+    toggleEditMode = () => {
         this.setState({
             editMode: !this.state.editMode,
         })
     }
     render() {
 
-        return <Status editMode={this.state.editMode} status={this.state.status} toggleEditMode={this.toggleEditMode.bind(this)} />
+        return <Status editMode={this.state.editMode} status={this.state.status} toggleEditMode={this.toggleEditMode} />
     }
 }
 
