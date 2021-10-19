@@ -1,15 +1,6 @@
 
-import { connect } from 'react-redux';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
 import Messages from './Messages';
 
-let mapStateToProps = (state) => {
 
-    return {
-        isAuth: state.auth.isAuth
-    }
-}
-
-const MessagesContainer = connect(mapStateToProps, {})(Messages)
-
-
-export default MessagesContainer;
+export default withAuthRedirect(Messages);
