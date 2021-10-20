@@ -7,6 +7,15 @@ class StatusContainer extends React.Component {
         status: this.props.status
     }
 
+    componentDidUpdate(prevProps, prevState) {
+
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
+    }
+
     activateEditMode = () => {
         this.setState({
             editMode: true,
@@ -24,7 +33,6 @@ class StatusContainer extends React.Component {
         })
     }
     render() {
-
         return (
             <div className={mod.status}>
                 {!this.state.editMode
@@ -38,7 +46,6 @@ class StatusContainer extends React.Component {
         )
     }
 }
-
 
 
 export default StatusContainer
