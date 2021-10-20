@@ -21,7 +21,7 @@ const Profile = (props) => {
             <p><b>Github:</b> <a href={props.contacts.github} target="_blank" rel="noreferrer"> {props.contacts.github}</a></p>
             <p><b>Inst:</b> <a href={props.contacts.instagram} target="_blank" rel="noreferrer"> {props.contacts.instagram}</a></p>
 
-            <StatusContainer />
+            <StatusContainer status={props.status} updateStatus={props.updateStatus} />
           </div>
         </div>
       </div>

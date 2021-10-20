@@ -1,20 +1,41 @@
 import React from "react";
-import Status from "./Status";
+import mod from './Status.module.css';
 
 class StatusContainer extends React.Component {
     state = {
-        editMode: true,
-        status: 'mapPropsToState'
+        editMode: false,
+        status: this.props.status
     }
 
-    toggleEditMode = () => {
+    activateEditMode = () => {
         this.setState({
-            editMode: !this.state.editMode,
+            editMode: true,
+        })
+    }
+    deactivateEditMode = () => {
+        this.setState({
+            editMode: false,
+        })
+        this.props.updateStatus(this.state.status);
+    }
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
         })
     }
     render() {
 
-        return <Status editMode={this.state.editMode} status={this.state.status} toggleEditMode={this.toggleEditMode} />
+        return (
+            <div className={mod.status}>
+                {!this.state.editMode
+                    ? <p className={mod.status__text}
+                        onDoubleClick={this.activateEditMode}
+                    >{this.props.status}</p>
+                    : <input className={mod.status__inp} type="text" value={this.state.status} autoFocus
+                        onBlur={this.deactivateEditMode} onChange={this.onStatusChange} />
+                }
+            </div>
+        )
     }
 }
 

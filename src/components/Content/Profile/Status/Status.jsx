@@ -4,12 +4,12 @@ const Status = (props) => {
 
     return (
         <div className={mod.status}>
-            {props.editMode
+            {!props.editMode
                 ? <p className={mod.status__text}
-                    onDoubleClick={props.toggleEditMode}
+                    onDoubleClick={props.activateEditMode}
                 >{props.status}</p>
                 : <input className={mod.status__inp} type="text" value={props.status}
-                    onBlur={props.toggleEditMode} autoFocus />
+                    onBlur={props.deactivateEditMode} autoFocus />
             }
         </div>
     )

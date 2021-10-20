@@ -1,10 +1,11 @@
 import { profileAPI } from "../API/profileAPI";
 
-const TYPE = 'ADD-POST',
+const ADD_POST = 'ADD-POST',
     POST_TEXT = 'UPDATE-TEXT-NEW-POST',
     IS_PRESS_POST = 'IS-PRESS-POST',
     SET_USER_PROFILE = 'SET_USER_PROFILE',
-    IS_LOADING = 'IS_LOADING'
+    IS_LOADING = 'IS_LOADING',
+    SET_STATUS = 'SET_STATUS'
 
 
 let initialState = {
@@ -16,12 +17,13 @@ let initialState = {
     textNewPost: '',
     profile: null,
     isLoadingProfile: false,
-    baseImgUrl: 'https://avatars.mds.yandex.net/get-zen_gallery/3129491/pub_5f735184ece66e29a8651a30_5f735185ece66e29a8651a32/scale_1200'
+    baseImgUrl: 'https://avatars.mds.yandex.net/get-zen_gallery/3129491/pub_5f735184ece66e29a8651a30_5f735185ece66e29a8651a32/scale_1200',
+    status: 'Enter your status'
 }
 const reducerProfile = (state = initialState, action) => {
 
     switch (action.type) {
-        case TYPE:
+        case ADD_POST:
             {
                 action.e.preventDefault();
                 return addPost(state);
@@ -55,6 +57,9 @@ const reducerProfile = (state = initialState, action) => {
         case IS_LOADING: {
             return { ...state, isLoadingProfile: !state.isLoadingProfile }
         }
+        case SET_STATUS: {
+            return { ...state, status: action.status }
+        }
         default:
             return state;
     }
@@ -81,7 +86,7 @@ function addPost(state) {
 }
 export const
     actionCreatorAddPost = (event) => ({
-        type: TYPE,
+        type: ADD_POST,
         e: event
     }),
     actionCreatorUpdateTextNewPost = e => ({
@@ -98,6 +103,10 @@ export const
     }),
     actionCreatorUpdateIsLoadingProfile = () => ({
         type: IS_LOADING
+    }),
+    actionCreatorSetStatus = (status) => ({
+        type: SET_STATUS,
+        status,
     }),
 
 
@@ -134,6 +143,28 @@ export const
                         dispatch(actionCreatorUpdateIsLoadingProfile());
                     });
             }
+        }
+    },
+    thunkGetStatus = (userId) => {
+        return dispatch => {
+            profileAPI.getStatus(userId)
+                .then(response => {
+                    let status = response.data ? response.data : 'No status'
+                    dispatch(actionCreatorSetStatus(status));
+                })
+
+        }
+    },
+    thunkUpdateStatus = (status) => {
+        return dispatch => {
+
+
+            profileAPI.updateStatus(status)
+                .then(response => {
+                    if (response.data.resultCode === 0) {
+                        dispatch(actionCreatorSetStatus(status))
+                    }
+                })
         }
     }
 export default reducerProfile;

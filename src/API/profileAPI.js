@@ -9,5 +9,12 @@ export const profileAPI = {
         return instance.get(`profile/${id}`)
             .then(response => response.data);
     },
+    getStatus(id) {
+        return instance.get(`/profile/status/20249`);
+    },
+    updateStatus(status) {
+        // status: status  === status
+        return instance.put(`profile/status`, { status });
+    }
 }
 
