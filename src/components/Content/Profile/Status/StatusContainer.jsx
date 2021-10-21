@@ -35,10 +35,11 @@ class StatusContainer extends React.Component {
     render() {
         return (
             <div className={mod.status}>
+                <b>Status: </b>
                 {!this.state.editMode
-                    ? <p className={mod.status__text}
+                    ? <span className={mod.status__text}
                         onDoubleClick={this.activateEditMode}
-                    >{this.props.status}</p>
+                    >{this.props.status}</span>
                     : <input className={mod.status__inp} type="text" value={this.state.status} autoFocus
                         onBlur={this.deactivateEditMode} onChange={this.onStatusChange} />
                 }

@@ -146,7 +146,25 @@ export const
         }
     },
     thunkGetStatus = (userId) => {
+        debugger
         return dispatch => {
+
+            if (userId === 'me') {
+
+                profileAPI.getAuthInfo()
+                    .then(response => {
+                        if (response.resultCode === 0) {
+
+                            userId = response.data.id;
+                            profileAPI.getStatus(userId)
+                                .then(resp => {
+                                    let status = resp.data ? resp.data : 'No status'
+                                    dispatch(actionCreatorSetStatus(status));
+                                })
+                        }
+
+                    });
+            }
             profileAPI.getStatus(userId)
                 .then(response => {
                     let status = response.data ? response.data : 'No status'

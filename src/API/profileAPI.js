@@ -10,7 +10,7 @@ export const profileAPI = {
             .then(response => response.data);
     },
     getStatus(id) {
-        return instance.get(`/profile/status/20249`);
+        return instance.get(`profile/status/${id}`);
     },
     updateStatus(status) {
         // status: status  === status
