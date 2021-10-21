@@ -146,7 +146,7 @@ export const
         }
     },
     thunkGetStatus = (userId) => {
-        debugger
+        
         return dispatch => {
 
             if (userId === 'me') {
