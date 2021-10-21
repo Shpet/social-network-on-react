@@ -5,16 +5,19 @@ import NewMessage from './NewMessage/NewMessage';
 const Dialog = (props) => {
 
     let messages = props.messages;
-
+    const adddMess = (values) => {
+        props.sendMess(values.message);
+    }
     return (
         <div className={mod.dialog}>
             <DialogHeader name="Vadik Shpet" status="online" />
             <section className={mod.messages}>
                 {messages}
                 <NewMessage textNewMess={props.textNewMess}
-                    sendMess={props.sendMess}
                     updateTextSendMess={props.updateTextSendMess}
-                    isPressSend={props.isPressSend} />
+                    isPressSend={props.isPressSend}
+                    onSubmit={adddMess}
+                />
 
             </section>
         </div >

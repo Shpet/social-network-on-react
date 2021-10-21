@@ -1,6 +1,5 @@
 const TYPE = 'SEND-MESS',
-    SEND_TEXT = 'UPDATE-TEXT-SEND-MESS',
-    IS_PRESS_SEND = 'IS-PRESS-SEND';
+    SEND_TEXT = 'UPDATE-TEXT-SEND-MESS';
 
 let initialState = {
     messageData: [
@@ -18,14 +17,12 @@ let initialState = {
         { id: 4, imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo", imgAlt: "companion's avatar", name: "Lishayna Masha" },
         { id: 5, imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo", imgAlt: "companion's avatar", name: "Neznayeva Ksu" }
     ],
-    textNewMess: ''
 };
 const reducerMessage = (state = initialState, action) => {
     switch (action.type) {
         case TYPE:
             {
-                action.e.preventDefault();
-                return sendMess(state);
+                return sendMess(state, action.mess);
             }
         case SEND_TEXT: {
             return {
@@ -33,58 +30,33 @@ const reducerMessage = (state = initialState, action) => {
                 textNewMess: action.textNewMess,
             }
         }
-        case IS_PRESS_SEND:
-            let enter = false,
-                shift = false;
-            if (action.e.key === "Enter") {
-                enter = true;
-            }
-            if (action.e.shiftKey) {
-                shift = true;
-            }
-            if (enter && shift) {
-                action.e.preventDefault();
-                enter = false;
-                shift = false;
-                return sendMess(state);
-            }
-            return state;
         default:
             return state;
     }
 
 
 }
-function sendMess(state) {
+function sendMess(state, mess) {
     let stateCopy;
-    if (state.textNewMess.trim()) {
+    if (mess.trim()) {
         const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
         let sendMess = {
             imgUrl: "https://lh3.googleusercontent.com/ogw/ADea4I6pTMZmY51r32eT9i3FAiOVlAD9s9LICrcc-ifpaw=s32-c-mo",
             imgAlt: "You",
-            textMess: state.textNewMess,
+            textMess: mess,
             dateMess: dateNow,
         }
 
         stateCopy = {
             ...state,
             messageData: [...state.messageData, sendMess],
-            textNewMess: ''
         }
     }
     return stateCopy;
 }
 export const
-    actionCreatorSendMess = (event) => ({
+    actionCreatorSendMess = (mess) => ({
         type: TYPE,
-        e: event
-    }),
-    actionCreatorUpdateTextMessage = e => ({
-        type: SEND_TEXT,
-        textNewMess: e.target.value
-    }),
-    actionCreatorIsPressSend = event => ({
-        type: IS_PRESS_SEND,
-        e: event
+        mess: mess
     })
 export default reducerMessage;

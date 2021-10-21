@@ -1,18 +1,15 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import mod from './NewMessage.module.css';
 
 const NewMessage = (props) => {
 
     return (
-        <form className={mod.newMessage}>
-            <textarea placeholder="Enter your message"
-                value={props.textNewMess}
-                onChange={props.updateTextSendMess}
-                onKeyDown={props.isPressSend}></textarea>
-            <input type="submit" value="отправить"
-                onClick={props.sendMess} />
+        <form className={mod.newMessage} onSubmit={props.handleSubmit}>
+            <Field component="textarea" placeholder="Enter your message" name="message" onKeyDown={props.isPressSend} />
+            <button>отправить</button>
         </form>
     )
 }
 
-export default NewMessage;
+export default reduxForm({ form: 'newMessage' })(NewMessage);
