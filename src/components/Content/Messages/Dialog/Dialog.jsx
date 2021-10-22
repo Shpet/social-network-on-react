@@ -5,7 +5,7 @@ import NewMessage from './NewMessage/NewMessage';
 const Dialog = (props) => {
 
     let messages = props.messages;
-    const adddMess = (values) => {
+    const addMess = (values) => {
         props.sendMess(values.message);
     }
     return (
@@ -16,7 +16,7 @@ const Dialog = (props) => {
                 <NewMessage textNewMess={props.textNewMess}
                     updateTextSendMess={props.updateTextSendMess}
                     isPressSend={props.isPressSend}
-                    onSubmit={adddMess}
+                    onSubmit={addMess}
                 />
 
             </section>

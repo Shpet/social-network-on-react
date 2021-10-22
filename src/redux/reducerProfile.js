@@ -1,8 +1,6 @@
 import { profileAPI } from "../API/profileAPI";
 
 const ADD_POST = 'ADD-POST',
-    POST_TEXT = 'UPDATE-TEXT-NEW-POST',
-    IS_PRESS_POST = 'IS-PRESS-POST',
     SET_USER_PROFILE = 'SET_USER_PROFILE',
     IS_LOADING = 'IS_LOADING',
     SET_STATUS = 'SET_STATUS'
@@ -14,7 +12,6 @@ let initialState = {
         { id: 1, mess: "First post", date: "01.06.2016" },
         { id: 2, mess: "To ignore, add // eslint-disable-next-line to the line before.", date: "31.02.2017" },
     ],
-    textNewPost: '',
     profile: null,
     isLoadingProfile: false,
     baseImgUrl: 'https://avatars.mds.yandex.net/get-zen_gallery/3129491/pub_5f735184ece66e29a8651a30_5f735185ece66e29a8651a32/scale_1200',
@@ -25,32 +22,8 @@ const reducerProfile = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             {
-                action.e.preventDefault();
-                return addPost(state);
+                return addPost(state, action.newPostText);
             }
-        case POST_TEXT: {
-            return {
-                ...state,
-                textNewPost: action.textNewPost
-            };
-
-        }
-        case IS_PRESS_POST:
-            let enter = false,
-                shift = false;
-            if (action.e.key === "Enter") {
-                enter = true;
-            }
-            if (action.e.shiftKey) {
-                shift = true;
-            }
-            if (enter && shift) {
-                action.e.preventDefault();
-                enter = false;
-                shift = false;
-                return addPost(state);
-            }
-            return state;
         case SET_USER_PROFILE: {
             return { ...state, profile: action.profile }
         }
@@ -65,37 +38,28 @@ const reducerProfile = (state = initialState, action) => {
     }
 }
 
-function addPost(state) {
+function addPost(state, text) {
 
     let stateCopy;
-    if (state.textNewPost.trim()) {
+    if (text.trim()) {
         const dateNow = new Date(Date.now()).toLocaleString('ru', { day: "2-digit", month: "2-digit", year: 'numeric' }).replace(/\//g, '.');
         let newPost = {
-            id: 3,
-            mess: state.textNewPost,
+            id: state.postData["length"],
+            mess: text,
             date: dateNow,
         }
 
         stateCopy = {
             ...state,
             postData: [newPost, ...state.postData],
-            textNewPost: ''
         }
     }
     return stateCopy;
 }
 export const
-    actionCreatorAddPost = (event) => ({
+    actionCreatorAddPost = (text) => ({
         type: ADD_POST,
-        e: event
-    }),
-    actionCreatorUpdateTextNewPost = e => ({
-        type: POST_TEXT,
-        textNewPost: e.target.value
-    }),
-    actionCreatorIsPressPost = event => ({
-        type: IS_PRESS_POST,
-        e: event
+        newPostText: text
     }),
     actionCreatorSetUserProfile = profile => ({
         type: SET_USER_PROFILE,
@@ -146,7 +110,7 @@ export const
         }
     },
     thunkGetStatus = (userId) => {
-        
+
         return dispatch => {
 
             if (userId === 'me') {

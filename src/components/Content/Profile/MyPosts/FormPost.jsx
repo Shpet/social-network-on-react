@@ -1,15 +1,17 @@
+import { Field, reduxForm } from "redux-form"
 
 
 const FormPost = (props) => {
+
     return (
         <form onSubmit={props.handleSubmit}>
-            <textarea placeholder="Write about your mood..."
+            <Field component="textarea" placeholder="Write about your mood..."
                 value={props.textNewPost}
-                onChange={props.updateTextNewPost}
-                onKeyDown={props.isPressPost} />
-            <input type="submit" onClick={props.addPost} />
+                onKeyDown={props.isPressPost}
+                name="newPost" />
+            <button onClick={props.addPost} >отправить</button>
         </form>
     )
 }
 
-export default FormPost
+export default reduxForm({ form: 'newPost' })(FormPost)

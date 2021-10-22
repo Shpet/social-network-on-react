@@ -23,7 +23,7 @@ main .posts{
     max-height: 250px;
     min-height: 100px;
   }
-  .posts__new-post form input{
+  .posts__new-post form button{
     width: 200px;
     height: 50px;
     background-color: transparent;
@@ -36,7 +36,7 @@ main .posts{
     cursor: pointer;
     transition: .3s;
   }
-  .posts__new-post form input:hover{
+  .posts__new-post form button:hover{
     background-color: darkred;
     border: none;
     color: #000;
